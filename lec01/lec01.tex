@@ -1,96 +1,157 @@
-\documentclass[landscape]{slides}
-\usepackage[landscape]{geometry}
+\documentclass{beamer}
 \usepackage{inconsolata}
 \usepackage{color}
 \usepackage{listings}
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
 \input{../langListingMonokai}
 
+\title{Python 101}
+\subtitle{Lec01 \\ Python and Primitive Data Types}
+\author{thoum}
+
 \begin{document}
-\begin{slide}
-\textcolor{blue}{\Large{Lecture 01}}
+\frame{\titlepage}
 
-Python and Primitive Data Types
-\end{slide}
-
-\begin{slide}
-\textcolor{black}{\large{Why Python?}}
+\begin{frame}
+\frametitle{WHY Python?}
 \begin{itemize}
-\vspace{-10mm}
     \item
     Hello, World! in C
     \begin{lstinputlisting}
       {./hello.c}
     \end{lstinputlisting}
-\vspace{-10mm}
     \item
     Hello, World! in JAVA
     \begin{lstinputlisting}
       {./hello.java}
     \end{lstinputlisting}
 \end{itemize}
-\end{slide}
+\end{frame}
 
-\begin{slide}
-  \textcolor{black}{\large{Why Python?}}
+\begin{frame}
+\frametitle{WHY Python?}
 \begin{itemize}
-\vspace{-10mm}
     \item
-      Hello, World! in Brainfuck\footnote{https://namu.wiki/w/BrainFuck}
+      Hello, World! in
+      Brainfuck\footnote{\small{https://namu.wiki/w/BrainFuck}}
     \begin{lstinputlisting}
       {./hello.bf}
     \end{lstinputlisting}
-
 \end{itemize}
-\end{slide}
+\end{frame}
 
-\begin{slide}
-  \textcolor{black}{\large{However in Python..}}
-\end{slide}
-\begin{slide}
-\vspace{-10mm}
-    \begin{lstinputlisting}[firstline=1, lastline=1]
-      {./01.py}
+\begin{frame}
+\frametitle{WHY Python?}
+  \textcolor{black}{\LARGE{However in Python..}}
+\end{frame}
+\begin{frame}
+    \begin{lstinputlisting}
+      {./hello.py}
     \end{lstinputlisting}
-\end{slide}
+\end{frame}
 
-\begin{slide}
-  
-  \textcolor{black}{\large{The Primitive Types}}
-    \begin{lstinputlisting}[firstline=4, lastline=15]
-      {./01.py}
+\begin{frame}
+\frametitle{WHY Python?}
+  {\Large{Python lets you\ldots}}
+  \begin{itemize}
+    \item Care less about the system details.
+    \item Think at the high level.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{WHY Python?}
+  \begin{center}
+  {\Large{Lets Begin!}}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Built-ins}
+    \begin{lstinputlisting}
+      {./primitive_types.py}
     \end{lstinputlisting}
-\end{slide}
+\end{frame}
 
-\begin{slide}
+\begin{frame}
+  \frametitle{Numerals}
+    \begin{lstinputlisting}[firstline=1, lastline=6]
+      {./primitive_types.py}
+    \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Numerals}
+  \textcolor{black}{Yes, the numbers we know.}
+  \begin{itemize}
+    \item Python has \alert{UNLIMITED} precision for integers.
+
+      (C's intmax is usually 2147483647)
+    \item There are errors present in floats.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
   \textcolor{black}{\large{Possible Operations with Integers}}
-    \begin{lstinputlisting}[firstline=18, lastline=27]
-      {./01.py}
+    \begin{lstinputlisting}
+      {./int_ops.py}
     \end{lstinputlisting}
-\end{slide}
+\end{frame}
 
-\begin{slide}
+\begin{frame}
+  \frametitle{Strings}
+    \begin{lstinputlisting}[firstline=8, lastline=12]
+      {./primitive_types.py}
+    \end{lstinputlisting}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Strings}
+  \begin{itemize}
+    \item Strings are enclosed in matching (') or (")s.(No difference)
+    \item Note that a single character is also a string.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Strings}
   \textcolor{black}{\large{Possible Operations with Strings}}
-    \begin{lstinputlisting}[firstline=29, lastline=37]
-      {./01.py}
-    \end{lstinputlisting}
-\end{slide}
 
-\begin{slide}
-  \textcolor{black}{\large{Possible Operations with Booleans}}
-  \begin{lstinputlisting}[firstline=39, lastline=50]
-    {./01.py}
+  There are many things that can be done with a string(or an
+  \textit{ITERABLE}), but we deal with them later.
+  \begin{lstinputlisting}
+    {./string_ops.py}
   \end{lstinputlisting}
-\end{slide}
+\end{frame}
 
-\begin{slide}
-  
-\end{slide}
+\begin{frame}
+  \frametitle{Booleans}
+  True and False.
+  \begin{lstinputlisting}[firstline=14, lastline=15]
+    {./primitive_types.py}
+  \end{lstinputlisting}
+\end{frame}
 
+\begin{frame}
+  \frametitle{Strings}
+  \textcolor{black}{\large{Possible Operations with Booleans}}
+  \begin{lstinputlisting}
+    {./bool_ops.py}
+  \end{lstinputlisting}
+\end{frame}
 
+\begin{frame}[plain, c]
+  \begin{center}
+    Questions?
+  \end{center}
+\end{frame}
 
-
-
-
+\begin{frame}{Iterables}
+  We can combine the data types in lists, tuples\ldots
+\end{frame}
 
 
 \end{document}
