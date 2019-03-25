@@ -9,6 +9,7 @@ lst[2] = 3
 # tup[2] = 3 why not?
 
 print(sum(nums))
+print(max(nums))
 print(sorted(nums)) # new list
 print(nums)
 nums.sorted() # on nums it self

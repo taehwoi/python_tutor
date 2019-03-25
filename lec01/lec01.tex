@@ -33,7 +33,7 @@
 \begin{itemize}
     \item
       Hello, World! in
-      Brainfuck\footnote{\small{https://namu.wiki/w/BrainFuck}}
+      Brainfuck\footnote{\footnotesize{https://namu.wiki/w/BrainFuck}}
     \begin{lstinputlisting}
       {./hello.bf}
     \end{lstinputlisting}
@@ -83,7 +83,6 @@
 
 \begin{frame}
   \frametitle{Numerals}
-  \textcolor{black}{Yes, the numbers we know.}
   \begin{itemize}
     \item Python has \alert{UNLIMITED} precision for integers.
 
@@ -119,9 +118,6 @@
 \begin{frame}
   \frametitle{Strings}
   \textcolor{black}{\large{Possible Operations with Strings}}
-
-  There are many things that can be done with a string(or an
-  \textit{ITERABLE}), but we deal with them later.
   \begin{lstinputlisting}
     {./string_ops.py}
   \end{lstinputlisting}
@@ -166,8 +162,9 @@
 \end{frame}
 
 \begin{frame}{From Containers to Iterables}
-  The \textit{containers} we have learned are also \textit{iterabes}.
-  Since iterables provide MANY useful functions, lets treat them as iterables.
+  The \textit{containers} we have learned are also \textit{iterables}.
+
+  Since \textit{iterables} provide MANY useful functions, lets use them.
 \end{frame}
 
 
@@ -190,18 +187,19 @@
   \textcolor{black}{\large{Possible Questions}}
   \begin{itemize}
     \item Tuple vs List?
+      \begin{itemize}
+        \item Tuples are Immutable. Memory efficient, and fast creation.
+        \item Lists are Mutable.
+      \end{itemize}
 
-      Tuples are Immutable. Memory efficient, and fast creation.
-      Lists are Mutable.
-
-      People tend to put different types of stuff in tuples,
-      ('name', 26, 'M'), while same type in a list [1,2,3], 
-      but this is just a convention.
     \item f(lst) vs lst.f()?
-
-      This is a question of function vs method. In python, functions are for
-      multiple class of objects, while method is usually restricted to the
-      type. (\txita{e.g.} len('abc'), len([1,2,3]) vs [1,2,3].sorted())
+      Function vs Method. 
+      \begin{itemize}
+        \item Functions are for multiple class of objects
+        \item Method is restricted to the object, and change itself. 
+          
+          (\textit{e.g.} len('abc'), len([1,2,3]) vs [1,2,3].sort())
+      \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -220,7 +218,40 @@
   \begin{lstinputlisting}
     {./myrange.py}
   \end{lstinputlisting}
+\end{frame}
 
+\begin{frame}{Range}
+  \begin{itemize}
+    \item range(stop) (== range(0, stop))
+    \item range(start, stop)
+    \item range(start, start, step)
+    \item range is \alert{VERY} memory efficient, thanks to lazy evaluation.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Assignments}
+  Input: a string. \\
+  Check if the input string is a palindrome. Should ignore whitespace.
+\end{frame}
+
+\begin{frame}{Assignments}
+  Input: a string. \\
+  Print the number of words, and the word that comes last in
+  alphabetical order.
+\end{frame}
+
+\begin{frame}{Assignments}
+    \begin{tabular}{c c}
+      90\ldots100 & A \\
+      80\ldots89 & B \\
+      70\ldots79 & C \\
+      60\ldots69 & D \\
+      under 60 & F
+    \end{tabular}
+    \bigskip
+
+    Input: Number between 0\ldots100.\\
+    Print the corresponding grade, \textit{without} using if.
 \end{frame}
 
 \end{document}
