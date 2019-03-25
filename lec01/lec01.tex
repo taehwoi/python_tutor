@@ -149,9 +149,78 @@
   \end{center}
 \end{frame}
 
-\begin{frame}{Iterables}
-  We can combine the data types in lists, tuples\ldots
+\begin{frame}{Containers}
+  Now we start gathering individual values together,
+  using Containers.
 \end{frame}
 
+\begin{frame}{Containers}
+  \textcolor{black}{\large{Possible Operations with Containers}}
+  \begin{lstinputlisting}
+    {./cont.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Containers}
+  The only thing you can do with a \textit{container} is membership.
+\end{frame}
+
+\begin{frame}{From Containers to Iterables}
+  The \textit{containers} we have learned are also \textit{iterabes}.
+  Since iterables provide MANY useful functions, lets treat them as iterables.
+\end{frame}
+
+
+\begin{frame}{Iterables}
+  \textcolor{black}{\large{Possible Operations}}
+  \begin{lstinputlisting}[firstline=4, lastline=19]
+    {./iters.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Iterables}
+  \textcolor{black}{\large{Possible Questions}}
+  \begin{itemize}
+    \item Tuple vs List?
+    \item f(lst) vs lst.f()?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Iterables}
+  \textcolor{black}{\large{Possible Questions}}
+  \begin{itemize}
+    \item Tuple vs List?
+
+      Tuples are Immutable. Memory efficient, and fast creation.
+      Lists are Mutable.
+
+      People tend to put different types of stuff in tuples,
+      ('name', 26, 'M'), while same type in a list [1,2,3], 
+      but this is just a convention.
+    \item f(lst) vs lst.f()?
+
+      This is a question of function vs method. In python, functions are for
+      multiple class of objects, while method is usually restricted to the
+      type. (\txita{e.g.} len('abc'), len([1,2,3]) vs [1,2,3].sorted())
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Iterables}
+  \textcolor{black}{\large{Subscription}}
+  \begin{lstinputlisting}
+    {./subs.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Creating Iterables}
+  How do we build a list from 1 to 100?
+\end{frame}
+
+\begin{frame}{Range}
+  \begin{lstinputlisting}
+    {./myrange.py}
+  \end{lstinputlisting}
+
+\end{frame}
 
 \end{document}
