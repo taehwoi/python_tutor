@@ -2,6 +2,8 @@
 \usepackage{inconsolata}
 \usepackage{color}
 \usepackage{listings}
+\usepackage{cooltooltips}
+\usepackage[normalem]{ulem}
 \setbeamertemplate{navigation symbols}{}%remove navigation symbols
 \input{../langListingMonokai}
 
@@ -11,6 +13,13 @@
 
 \begin{document}
 \frame{\titlepage}
+
+\begin{frame}[fragile]
+\frametitle{Before we begin}
+  \begin{lstinputlisting}
+    {./misc.py}
+  \end{lstinputlisting}
+\end{frame}
 
 \begin{frame}[fragile]
 \frametitle{If}
@@ -35,7 +44,9 @@ if some_boolean:
 \end{frame}
 
 \begin{frame}{For Loops}
-  Repeat Stuff.
+  \sout{Repeat N times}
+
+  Iterate members of a sequence.
 \end{frame}
 
 \begin{frame}{For Loops, C style}
@@ -46,8 +57,8 @@ if some_boolean:
 
 \begin{frame}[fragile]
   \begin{lstlisting}
-  for value in iterable:
-      pass
+for value in iterable:
+    pass
   \end{lstlisting}
 \end{frame}
 
@@ -57,11 +68,118 @@ if some_boolean:
   \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{Combining Ifs and Fors}
+\begin{frame}{For Loops Nested}
   \begin{lstinputlisting}
-    new examples
+    {./for_nest.py}
   \end{lstinputlisting}
 \end{frame}
+
+\begin{frame}{While Loops}
+  Repeat \textit{while} condition(boolean) is satisfied.
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{lstlisting}
+while condition:
+    pass
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{lstinputlisting}
+    {./while.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Practice}
+  Print from 1 to 10
+
+  Using for loop and while loop.
+  Hint: \textcolor{white}{if k > 10: break}
+\end{frame}
+
+\begin{frame}{Not So Easy Practice}
+  Output: print 99dan from 1 to N.
+  Hint: \textcolor{white}{Nest for loops}
+\end{frame}
+
+\begin{frame}[fragile]{Practice with stars!}
+  Input: N
+
+  Print:
+  \begin{lstlisting}
+*
+**
+***
+
+  *
+ **
+***
+
+  *
+ ***
+*****
+  \end{lstlisting}
+  Hint: \textcolor{white}{'*' * k}
+\end{frame}
+
+
+\begin{frame}{??????????}
+  Using for loops, create list of even numbers in [0, 10]
+
+  Hint: \textcolor{white}{Use append and range}
+\end{frame}
+
+\begin{frame}[fragile]{??????????}
+  \begin{lstlisting}
+lst = []
+for n in range(0, 11, 2):
+    lst.append(n)
+
+# or
+
+for n in range(0, 11):
+    if n % 2 == 0:
+        lst.append(n)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Comprehension}
+  new\_list = [exp for var in some\_iter (if condition)]
+
+  In plain text:
+
+  Our NEW\_LIST's elements =
+
+  FOR each VAR in SOME\_ITER, (that meets CONDITION)
+  EXP
+
+  \begin{lstlisting}
+for var in some_iter:
+    if condition:
+      new_list.append(exp)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Comprehension}
+  \begin{lstinputlisting}
+    {./comp.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Generators}
+  Lazy version of comprehension [] $\rightarrow$ ()
+\end{frame}
+
+\begin{frame}{Easy Practice}
+  Input: 10 numbers
+
+  Output: sum of the numbers
+
+  How: Using for loops and list comprehension
+\end{frame}
+
+
 
 
 
