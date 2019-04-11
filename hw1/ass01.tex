@@ -1,0 +1,173 @@
+\documentclass{article}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{mdwlist}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+\geometry{headheight=2in}
+\geometry{top=2in}
+\usepackage{palatino}
+%\renewcommand{\rmdefault}{palatino}
+\usepackage{fancyhdr}
+\input{../langListingMonokai}
+%\pagestyle{fancy}
+
+\newcommand{\infint}{\int_{-\infty}^{\infty}}
+\newcommand{\Ab}{\bm{A}}
+\rhead{}
+\lhead{}
+\chead{%
+  {\vbox{%
+      \vspace{2mm}
+      \large
+      Python practice 1\hfill
+\\
+    }
+  }
+}
+
+\usepackage{paralist}
+
+\usepackage{todonotes}
+\setlength{\marginparwidth}{2.15cm}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,backgrounds}
+
+\newenvironment{enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\begin{document}
+\pagestyle{fancy}
+\setcounter{section}{-1}
+
+%% Q1
+\section{Getting Inputs}
+There are many kind of inputs, but we will focus on numbers for now.
+Python have to deal with these two types of inputs differently.
+\begin{enumerate}
+  \item One Line
+    \begin{lstlisting}
+1 2 3 4 5...
+    \end{lstlisting}
+  There is \textit{much} cleaner way to do this, which we will learn next week.
+  \begin{lstlisting}
+lst = input().split() # note that after split(), type is lst.
+nums = [] * len(lst)
+for i in range(len(nums)):
+    nums[i] = int(lst(i))
+  \end{lstlisting}
+  \item Seperate Lines
+  \begin{lstlisting}
+1
+2
+3
+4
+5
+...
+  \end{lstlisting}
+  We can do this by using For Loops. Usually, the number of inputs is also given.
+  The following code can store numbers given in this manner.
+  \begin{lstlisting}
+k = int(input()) # number of inputs
+lst = [0] * k
+
+for i in range(k):
+    lst[i] = int(input())
+  \end{lstlisting}
+\end{enumerate}
+
+\section{Lists}
+Generate a list of numbers [1, 100] with range.
+Print the value of $1 * 2 * ...99 * 100$.
+
+\section{99 dan}
+Print out the following:
+\begin{lstlisting}
+1 * 1 = 1
+1 * 2 = 2
+   ...
+9 * 9 = 81
+\end{lstlisting}
+We \textit{can} construct the string by concatanation like this:
+\begin{lstlisting}
+str(8) + ' * ' + str(9) + ' = ' + str(72)
+\end{lstlisting}
+but there is a better way.
+\href{https://www.google.com/search?q=python+string+format}{Google It!}
+
+\section{Lotto}
+Create and print a list of length \textit{6}, where each element is a random
+integer in range $[1, 45]$.
+
+\begin{lstlisting}
+lst = [0] * 6 # create a list of length 6, with all the elements set to 0.
+
+# Do Something
+
+print(*lst) # remember unpacking?
+\end{lstlisting}
+To learn how to generate random numbers
+\href{https://www.google.com/search?q=python+random+number}{Google It!}
+Among all the search result google provides, use \href{https://stackoverflow.com}{stackoverflow}.
+
+
+\section{Buy Lotto}
+Create a list of length \textit{6}, where each element is a random integer in
+range $[1, 45]$.  Now, get input from user(you) until the user has correctly typed the 6
+numbers.\\
+Note that order of numbers do not matter and CONFIRM that your program finishes correctly.
+
+
+\section{369}
+Print numbers in [1, 50]. But for numbers that are multiples of \textit{3}  ($e.g.$
+3,6,9...) and numbers that contain(\textit{membership??}) \textit{3}  ($e.g.$ 13, 23...), print clap.
+\begin{lstlisting}
+...
+11
+clap
+clap
+14
+clap
+16
+...
+\end{lstlisting}
+
+\section{2nd}
+Create a list of 100 random numbers.\\
+output: the 2nd largest element from the numbers.\\
+Sure, we can do the following. But solve it without sorting the list.
+\begin{lstlisting}
+print(sorted(lst[-2]))
+\end{lstlisting}
+
+\pagebreak
+\section{Challange: Fibonacci}
+The Fibonacci numbers are defined as following:
+$$F_0 = 0, F_1 = 1$$
+$$F_n = F_{n-1}+F_{n-2}, n > 1$$
+Input: N, Output: $N^th$ Fibonacci.\\
+Check that this program also prints $F_0$ and $F_1$ well, for input 0 and 1.\\
+Hint: We probably should store $F_0$ and $F_1$ somewhere, and work with them.
+
+\section{Challange: Matching parentheses Strings}
+Mismatched ()s ($e.g.$ "(()", ")(()" ) are painful when we are coding. Write a
+program that prints 'yes' when the ()s match, and 'no' when they do not match.
+
+\begin{lstlisting}
+())()
+no
+(())()
+yes
+\end{lstlisting}
+Googling this would probably lead you to the stack data structure. It is pretty
+simple to implement a stack using python lists. Try to figure it out.
+But, we do not need a stack to solve this one.
+
+\end{document}
