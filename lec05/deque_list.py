@@ -16,6 +16,5 @@ def g():
         q.appendleft(i)
 
 if __name__ == '__main__':
-    # repeat f and g 40000 times each
     print(timeit.timeit("f()", setup="from __main__ import f",number=2))
     print(timeit.timeit("g()", setup="from __main__ import g",number=2))
