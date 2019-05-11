@@ -1,0 +1,184 @@
+\documentclass{article}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{mdwlist}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+\geometry{headheight=2in}
+\geometry{top=2in}
+\usepackage{palatino}
+\usepackage{ulem}
+\usepackage[parfill]{parskip}
+%\renewcommand{\rmdefault}{palatino}
+\usepackage{fancyhdr}
+\input{../langListingMonokai}
+%\pagestyle{fancy}
+
+\newcommand{\infint}{\int_{-\infty}^{\infty}}
+\newcommand{\Ab}{\bm{A}}
+\rhead{}
+\lhead{}
+\chead{%
+  {\vbox{%
+      \vspace{2mm}
+      \large
+      Python practice 2\hfill
+\\
+    }
+  }
+}
+
+\usepackage{paralist}
+
+\usepackage{todonotes}
+\setlength{\marginparwidth}{2.15cm}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,backgrounds}
+
+\newenvironment{enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\begin{document}
+\pagestyle{fancy}
+\setcounter{section}{-1}
+
+%% Q1
+\section{DIE with a T}
+
+I am on a diet. That means I can only eat upto 2,000 kcal (2,000,000 cal) a day.
+I eat 4 meals a day(\textit{b}reakfast, \textit{l}unch, \textit{s}nack, and
+\textit{d}inner) and life would be easy if
+every food was exactly 500,000cal. But it isn't. So help me out.
+From 4 different groups of foods(each for the 4 meals I eat) each consisting of $N$
+foods, compute whether it is possible to select a food from each group
+so that the total calorie intake is \textit{exactly} 2,000,000 cal.\\
+\noindent\rule{\textwidth}{0.5pt}
+\textit{INPUT}: The first line is integer $N$.
+The \textit{i}-th line of next $N$ lines contains the four calorie value of each
+meal, $b_{i}, l_{i}, s_{i}, d_{i}$.
+
+\textit{OUTPUT}: Print \textbf{SUCCESS} if we can choose exactly 4 food so that
+the total of calorie equals 2,000,000.\\($b_{i}+l_{i}+s_{i}+d_{i} = 2,000,000$)
+Print \textbf{FAIL} elsewise.
+
+\textit{CONDITION}: $ 4 \le N \le 10,000$, $ 0 \le b,l,s,d \le 1,000,000$
+
+\textit{HINT}: The obvious approach would be to try every combination
+of $4$ foods from each meal. However, this approach takes time proportional to $N^4$,
+which is $10000000000000000$ in the worst case.
+Therefore, instead of trying every combination, we need a better approach.
+One possible approach would be computing \textit{partial} calorie $k$ in time
+proportional to $N^2$, and checking whether $2,000,000-k$ exists in $constant$ time. This can be done by a $set$. Using a $set$ also has the added benefit of
+\rule{0.5cm}{0.15mm} \rule{0.7cm}{0.15mm}, reducing computation time somewhat.\\
+\noindent\rule{\textwidth}{0.5pt}
+
+%% Q2
+\section{Statistics Showdown}
+Given $N$($N \% 2 == 1$) numbers, compute the following representative values.
+\begin{enumerate}
+  \item Arithmetic Mean
+  \item Geometric Mean
+  \item Median
+  \item Mode (The most common value)
+  \item Range (max - min)
+\end{enumerate}
+
+\noindent\rule{\textwidth}{0.5pt}
+\textit{INPUT}: The first line is integer $N$.
+The \textit{i}-th line of next $N$ lines contains a single integer $n_{i}$.
+
+\textit{OUTPUT}: Print 5 lines, each consisting of the Arithmetic Mean, Geometric
+Mean, Median, Mode, and Range. For Arithmetic and Geometric mean, round to one
+decimal place($1.75 = 1.8, 3.74 = 3.7$).
+
+\textit{CONDITION}: $ 1 \le N \le 200$, $ 0 \le n_{i} \le 1000$
+
+\textit{HINT}: Googling "root in python (other than square root)" would help
+calculating the Geometric Mean.
+\noindent\rule{\textwidth}{0.5pt}
+
+%% Q3
+\section{Prefix Calculator}
+We usually write mathematical expressions this way:
+$3+4*2$. This is called an infix notation, and although easy to understand, it has
+some drawbacks.
+%\begin{enumerate}
+  %\item We have to know precedence rules of operators to correctly compute the
+    %expression. Without knowing that '*' comes before '+', $3+4*2$ can be
+    %miscalculated as $14$.
+  %\item We have to use parentheses to express the intended order of operations.
+    %$(3+4)*2$ if we want the result to be 14.
+%\end{enumerate}
+Therefore, there are other notations like prefix notations(operators precede
+their operands), or postfix notations(operators follow their operands).
+For example, using prefix notation, the expression above becomes $(+\ 3\ (*\ 4\
+2))$.
+To evaluate this expression, we start from the left, and when we see an
+operator('+'), we expect two sub-expressions. We see a 3 and (* 4 2).
+3 is 3. For (* 4 2), we repeat the step above, with an operator('*') and
+two sub-expressions (4 and 2). Since there are no more sub-expressions to be
+evaluated, we calculate $(*\ 4\ 2) = 8$, and $(+\ 3\ 8) = 11$.
+
+TLDR; we are going to implement a mathematical expression
+evaluator. For your convenience, I have already implemented infix to prefix function.
+
+It's your job fill in $myeval(exp)$ to evaluate the prefix notation.
+
+
+\noindent\rule{\textwidth}{0.5pt}
+\textit{INPUT}: The first line is integer $N$.
+The \textit{i}-th line of next $N$ lines contains a single integer $n_{i}$.
+
+\textit{OUTPUT}: Print 5 lines, each consisting of the Arithmetic Mean, Geometric
+Mean, Median, Mode, and Range. For Arithmetic and Geometric mean, round to one
+decimal place($1.75 = 1.8, 3.74 = 3.7$).
+
+\textit{CONDITION}: $ 1 \le N \le 200$, $ 0 \le n_{i} \le 1000$
+
+\textit{HINT}: The return value of infix\_prefix is formed as following.
+\begin{alignat*}{3}
+  exp &::= \ \  &&(operand, exp, exp)\ \  &&tuple\\
+      &\ \ \ | &&n &&integer
+\end{alignat*}
+So, when the type of the expression is integer, (in python: $isinstance(exp, int)$), there
+is nothing to calculate and myeval just returns $n$. This becomes the basecase
+of recursion. For the tuple case, assuming that $myeval(exp)$ correctly
+calculates the results of the two subexpression would help.\\
+\noindent\rule{\textwidth}{0.5pt}
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
