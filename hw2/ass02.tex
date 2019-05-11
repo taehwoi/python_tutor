@@ -7,7 +7,7 @@
 \usepackage{geometry}
 \geometry{margin=1in}
 \geometry{headheight=2in}
-\geometry{top=2in}
+\geometry{top=1.0in}
 \usepackage{palatino}
 \usepackage{ulem}
 \usepackage[parfill]{parskip}
@@ -22,10 +22,9 @@
 \lhead{}
 \chead{%
   {\vbox{%
-      \vspace{2mm}
+      \vspace{1mm}
       \large
-      Python practice 2\hfill
-\\
+      Python practice 2\hfill \\
     }
   }
 }
@@ -46,20 +45,18 @@
 }{\end{enumerate}}
 
 \begin{document}
-\pagestyle{fancy}
+\thispagestyle{fancy}
 \setcounter{section}{-1}
 
 %% Q1
 \section{DIE with a T}
-
-I am on a diet. That means I can only eat upto 2,000 kcal (2,000,000 cal) a day.
+I am on a diet. So I can only eat upto 2,000 kcal (2,000,000 cal) a day.
 I eat 4 meals a day(\textit{b}reakfast, \textit{l}unch, \textit{s}nack, and
 \textit{d}inner) and life would be easy if
 every food was exactly 500,000cal. But it isn't. So help me out.
-From 4 different groups of foods(each for the 4 meals I eat) each consisting of $N$
-foods, compute whether it is possible to select a food from each group
+From 4 different groups of foods(each group representing the 4 meals I eat) each consisting of $N$ foods, compute whether it is possible to select a food from each group
 so that the total calorie intake is \textit{exactly} 2,000,000 cal.\\
-\noindent\rule{\textwidth}{0.5pt}
+\noindent\rule{\textwidth}{0.9pt}
 \textit{INPUT}: The first line is integer $N$.
 The \textit{i}-th line of next $N$ lines contains the four calorie value of each
 meal, $b_{i}, l_{i}, s_{i}, d_{i}$.
@@ -70,14 +67,31 @@ Print \textbf{FAIL} elsewise.
 
 \textit{CONDITION}: $ 4 \le N \le 10,000$, $ 0 \le b,l,s,d \le 1,000,000$
 
+\textit{EXAMPLE}:
+\begin{lstlisting}
+2
+100000 600000 400000 600000
+200000 500000 600000 800000
+\end{lstlisting}
+\begin{lstlisting}
+SUCCESS
+\end{lstlisting}
+\begin{lstlisting}
+1
+100000 600000 400000 600000
+\end{lstlisting}
+\begin{lstlisting}
+FAIL
+\end{lstlisting}
+
 \textit{HINT}: The obvious approach would be to try every combination
 of $4$ foods from each meal. However, this approach takes time proportional to $N^4$,
 which is $10000000000000000$ in the worst case.
 Therefore, instead of trying every combination, we need a better approach.
 One possible approach would be computing \textit{partial} calorie $k$ in time
-proportional to $N^2$, and checking whether $2,000,000-k$ exists in $constant$ time. This can be done by a $set$. Using a $set$ also has the added benefit of
-\rule{0.5cm}{0.15mm} \rule{0.7cm}{0.15mm}, reducing computation time somewhat.\\
-\noindent\rule{\textwidth}{0.5pt}
+proportional to $N^2$, and checking whether $(2000000-k)$ exists in $constant$ time. This can be done by a $set$. Using a $set$ also has the added benefit of
+removing duplicates, reducing computation time somewhat.\\
+\noindent\rule{\textwidth}{0.9pt}
 
 %% Q2
 \section{Statistics Showdown}
@@ -87,22 +101,41 @@ Given $N$($N \% 2 == 1$) numbers, compute the following representative values.
   \item Geometric Mean
   \item Median
   \item Mode (The most common value)
-  \item Range (max - min)
+  \item Range ($max(n_i) - min(n_i)$)
 \end{enumerate}
 
-\noindent\rule{\textwidth}{0.5pt}
+\noindent\rule{\textwidth}{0.9pt}
 \textit{INPUT}: The first line is integer $N$.
 The \textit{i}-th line of next $N$ lines contains a single integer $n_{i}$.
 
 \textit{OUTPUT}: Print 5 lines, each consisting of the Arithmetic Mean, Geometric
-Mean, Median, Mode, and Range. For Arithmetic and Geometric mean, round to one
-decimal place($1.75 = 1.8, 3.74 = 3.7$).
+Mean, Median, Mode, and Range of $n_{i}$. If there are more than 1 mode, print
+any of those. For Arithmetic and Geometric mean,
+round to one decimal place (\textit{e.g.} $1.75 = 1.8, 3.74 = 3.7$).
 
-\textit{CONDITION}: $ 1 \le N \le 200$, $ 0 \le n_{i} \le 1000$
+\textit{CONDITION}: $ 1 \le N \le 200$ ($N$ is odd number),  $ 0 \le n_{i} \le 1000$
+
+\textit{EXAMPLE}:
+\begin{lstlisting}
+5
+1
+4
+2
+3
+5
+\end{lstlisting}
+
+\begin{lstlisting}
+3.0
+2.6
+3
+1
+4
+\end{lstlisting}
 
 \textit{HINT}: Googling "root in python (other than square root)" would help
 calculating the Geometric Mean.
-\noindent\rule{\textwidth}{0.5pt}
+\noindent\rule{\textwidth}{0.9pt}
 
 %% Q3
 \section{Prefix Calculator}
@@ -126,59 +159,83 @@ operator('+'), we expect two sub-expressions. We see a 3 and (* 4 2).
 two sub-expressions (4 and 2). Since there are no more sub-expressions to be
 evaluated, we calculate $(*\ 4\ 2) = 8$, and $(+\ 3\ 8) = 11$.
 
-TLDR; we are going to implement a mathematical expression
-evaluator. For your convenience, I have already implemented infix to prefix function.
+TLDR; we are going to implement a mathematical expression calculator.
+For your convenience, I have already implemented the $infix\_prefix(exp)$
+(There is no need to understand how it works).
+It's your job fill in $calculate(exp)$ that evaluates the prefix notation,
+\textit{recursively}.
 
-It's your job fill in $myeval(exp)$ to evaluate the prefix notation.
 
+\noindent\rule{\textwidth}{0.9pt}
+\textit{INPUT}: A single line of a correct mathematical expression, with
+parentheses.
 
-\noindent\rule{\textwidth}{0.5pt}
-\textit{INPUT}: The first line is integer $N$.
-The \textit{i}-th line of next $N$ lines contains a single integer $n_{i}$.
+\textit{OUTPUT}: The result of calculating the mathematical expression.
 
-\textit{OUTPUT}: Print 5 lines, each consisting of the Arithmetic Mean, Geometric
-Mean, Median, Mode, and Range. For Arithmetic and Geometric mean, round to one
-decimal place($1.75 = 1.8, 3.74 = 3.7$).
+\textit{CONDITION}: For simplicity, the numbers used in the expression is a
+single digit number, ranging from 0 to 9. The operators used are $+(addition),
+-(substraction), *(multiplication), /(division)$.
 
-\textit{CONDITION}: $ 1 \le N \le 200$, $ 0 \le n_{i} \le 1000$
+\textit{EXAMPLE}:
+\begin{lstlisting}
+(3+2)*2
+10
+\end{lstlisting}
 
-\textit{HINT}: The return value of infix\_prefix is formed as following.
+\textit{HINT}: Before implementing calculate(prefix\_exp), examine the prefix notation
+of expressions. We can see that the prefix expression is formed as following:
 \begin{alignat*}{3}
-  exp &::= \ \  &&(operand, exp, exp)\ \  &&tuple\\
+  prefix\_exp &::= \ \  &&(operand,\ prefix\_exp,\ prefix\_exp)\ \  &&tuple\\
       &\ \ \ | &&n &&integer
 \end{alignat*}
-So, when the type of the expression is integer, (in python: $isinstance(exp, int)$), there
-is nothing to calculate and myeval just returns $n$. This becomes the basecase
-of recursion. For the tuple case, assuming that $myeval(exp)$ correctly
-calculates the results of the two subexpression would help.\\
-\noindent\rule{\textwidth}{0.5pt}
+When the type of the prefix\_exp is integer, (in Python:
+$isinstance(prefix\_exp,\ int)$), there
+is nothing to do; return $n$. This becomes the basecase
+of recursion. When it's a tuple, we have to do some calculation. Assuming that
+$calculate(prefix\_exp)$ will correctly calculate the results of the two subexpression would help.\\
+\noindent\rule{\textwidth}{0.9pt}
 
+%% Q4
+\section{Heart Signal}
+It is not often the case that someone you love, loves you back. It was easily
+observed in the heartwarming(or breaking?) tvshow Heart Signal. Now, as a fan
+of the show, it is of our interest to see if the participants can fulfill their love.
+Meaning that, someone who the participant likes also likes the participant
+back.\\
+\noindent\rule{\textwidth}{0.9pt}
+\textit{INPUT}: The first line is integer $N$. The \textit{i}-th line of next
+$N$ lines contains the participant's name, and the someone he/she likes,
+seperated by a space. The \textit{N+2}-th(last) line contains the name of a
+participant. 
 
+\textit{OUTPUT}: If the participant is also liked by the someone he/she likes,
+print \textbf{LOVE}. print \break{OUCH} elsewise.
 
+\textit{EXAMPLE}:
+\begin{lstlisting}
+5
+hulk blackwidow
+hawkeye blackwidow
+blackwidow ironman
+ironman pepper
+pepper ironman
+hulk
+
+OUCH
+\end{lstlisting}
+
+\begin{lstlisting}
+6
+hulk blackwidow
+hawkeye blackwidow
+blackwidow ironman
+ironman pepper
+pepper ironman
+pepper
+
+LOVE
+\end{lstlisting}
+\textit{HINT}: We would be using a list if the names were just integers...
+\noindent\rule{\textwidth}{0.9pt}
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
