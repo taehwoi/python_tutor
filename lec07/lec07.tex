@@ -1,0 +1,139 @@
+\documentclass{beamer}
+\usepackage{inconsolata}
+\usepackage{caption}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{subfig}
+\usepackage{cooltooltips}
+\usepackage{hyperref}
+\usepackage{perpage}
+\usepackage[normalem]{ulem}
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
+\input{../langListingMonokai}
+
+\newenvironment{enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=pink,
+}
+
+\MakePerPage{footnote}
+
+\title{Python 101}
+\subtitle{Lec07 \\ Classes Continued}
+\author{thoum}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Inheritance}
+One usage of classes is Inheritance.
+\end{frame}
+
+\begin{frame}
+\frametitle{Inheritance}
+The children inherits every thing about its parent, and have some + extras.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Inheritance}
+\begin{lstinputlisting}
+  {./mylist.py}
+\end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Explained}
+  $MyList(list)$ means that this class will inherit from $list$.
+  \begin{lstinputlisting}[firstline=1, lastline=1]
+  {./mylist.py}
+\end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Explained}
+  The $super()$ returns the parent class. We use super() to access the parent
+  classes data methods etc. Here, we initiate the parent first so that
+  parameters are automatically filled in.
+  \begin{lstinputlisting}[firstline=1, lastline=3]
+  {./mylist.py}
+\end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Explained}
+  $min(lst), max(lst)$ takes time proprotional to N. Here, we keep track of min
+  and max so that it can be known regardless of size, when the list grows
+  \begin{lstinputlisting}[firstline=1, lastline=6]
+  {./mylist.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Explained}
+  Here, we override the parent's \_\_len\_\_, which determines the value
+  returned when we do $len(lst)$.
+  \begin{lstinputlisting}[firstline=9, lastline=10]
+    {./mylist.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Explained}
+  Here, we override the parent's \_\_len\_\_, which determines the value
+  returned when we do $len(lst)$.
+  \begin{lstinputlisting}[firstline=8, lastline=10]
+    {./mylist.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Explained}
+  We override the append() of list, so that we keep track of min and max.
+  \begin{lstinputlisting}[firstline=12, lastline=17]
+    {./mylist.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Question}
+  Are we done implementing MyList so that it correctlys keep track of min and max?
+\end{frame}
+
+\begin{frame}{Question}
+  NO
+\end{frame}
+
+\begin{frame}{The Catch}
+  Everything that can be done to a $list$ can be done to a $MyList$.\\
+  $pop(),\ del,\ insert(),\ mylst[3]=4,\ a = mylst[3:4]$... you name it. This means that to
+  correctly keep track of min \& max, we have to override \textit{every single} method of a list
+  that is capable of changing its contents.
+\end{frame}
+
+\begin{frame}{Composition over Inheritance\footnote{Look this up in Google}}
+    So, it is often wise to compose your class with a list, rather than inheriting
+    it.
+\end{frame}
+
+\begin{frame}{MyList Composition Ver.}
+  We can control the methods we provide for interaction with the internal list.
+  \begin{lstinputlisting}[firstline=1, lastline=23]
+    {./composition.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Inheritance?}
+  We might use inheritance when the child has to provide every method its parents
+  provide + $\alpha$. ($i.e.$ The Gun class that inherits Item in an RPG
+  game?). But Design Patterns are a complicated subject by itself, so we won't
+  deal it in detail.
+\end{frame}
+
+\begin{frame}{Questions?}
+\end{frame}
+
+\begin{frame}{Next Week}
+  Twitter Crawler
+\end{frame}
+\end{document}
