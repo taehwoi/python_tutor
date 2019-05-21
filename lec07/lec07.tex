@@ -39,7 +39,7 @@ One usage of classes is Inheritance.
 
 \begin{frame}
 \frametitle{Inheritance}
-The children inherits every thing about its parent, and have some + extras.
+The child inherits every thing about its parent, and $+\alpha$.
 \end{frame}
 
 \begin{frame}[fragile]
@@ -60,25 +60,18 @@ The children inherits every thing about its parent, and have some + extras.
   The $super()$ returns the parent class. We use super() to access the parent
   classes data methods etc. Here, we initiate the parent first so that
   parameters are automatically filled in.
-  \begin{lstinputlisting}[firstline=1, lastline=3]
+  \begin{lstinputlisting}[firstline=1, lastline=4]
   {./mylist.py}
 \end{lstinputlisting}
 \end{frame}
 
 \begin{frame}{Explained}
-  $min(lst), max(lst)$ takes time proprotional to N. Here, we keep track of min
-  and max so that it can be known regardless of size.(Of course, there is no
-  free lunch, there is extra cost of comparing at insert and append)
+  $min(lst), max(lst)$ takes time proprotional to N.\\
+  Here, we keep track of min and max so that it can be known regardless of
+  size.\\
+  (Of course, there is no free lunch, there is extra cost of comparing at append.)
   \begin{lstinputlisting}[firstline=1, lastline=6]
   {./mylist.py}
-  \end{lstinputlisting}
-\end{frame}
-
-\begin{frame}{Explained}
-  Here, we override the parent's \_\_len\_\_, which determines the value
-  returned when we do $len(lst)$.
-  \begin{lstinputlisting}[firstline=9, lastline=10]
-    {./mylist.py}
   \end{lstinputlisting}
 \end{frame}
 
@@ -91,7 +84,8 @@ The children inherits every thing about its parent, and have some + extras.
 \end{frame}
 
 \begin{frame}{Explained}
-  We override the append() of list, so that we keep track of min and max.
+  We override the append() of list, so that we keep track of \_min and \_max.\\
+  After updating \_min and \_max, we insert to the list via super() call.
   \begin{lstinputlisting}[firstline=12, lastline=17]
     {./mylist.py}
   \end{lstinputlisting}
@@ -102,14 +96,20 @@ The children inherits every thing about its parent, and have some + extras.
 \end{frame}
 
 \begin{frame}{Question}
-  NO
+  \begin{center}
+    NO
+  \end{center}
 \end{frame}
 
 \begin{frame}{The Catch}
   Everything that can be done to a $list$ can be done to a $MyList$.\\
-  $pop(),\ del,\ insert(),\ mylst[3]=4,\ a = mylst[3:4]$... you name it. This means that to
-  correctly keep track of min \& max, we have to override \textit{every single} method of a list
-  that is capable of changing its contents.
+  $pop(),\ del,\ insert(),\ mylst[3]=4,\ mylst[3:4]$... you name it.\\
+  \mbox{}\\
+  This means that to correctly keep track of min \& max, we have to override
+  \textit{every single} method of a list that is capable of changing its
+  contents.\\
+  \mbox{}\\
+  Can you remember all of them?
 \end{frame}
 
 \begin{frame}{Composition over Inheritance\footnote{Look this up in Google}}
@@ -126,19 +126,28 @@ The children inherits every thing about its parent, and have some + extras.
 
 \begin{frame}{Inheritance?}
   We might use inheritance when the child has to provide every method its parents
-  provide + $\alpha$. ($i.e.$ The Gun class that inherits Item in an RPG
-  game?). But Design Patterns are a complicated subject by itself, so we won't
+  provide + $\alpha$. \\($i.e.$ The Gun class that inherits the Weapon class in an RPG
+  game?). \\But Design Patterns are a complicated subject by itself, so we won't
   deal it in detail.
 \end{frame}
 
 \begin{frame}{Questions?}
 \end{frame}
 
-\begin{frame}{Next Week}
-  Twitter Crawler
+\begin{frame}{Questions on homeworks?}
 \end{frame}
 
-\begin{frame}{Next Week}
+\begin{frame}{For Next Week}
+  \begin{center}
+    Twitter Crawler
+  \end{center}
+\end{frame}
+
+\begin{frame}{Demonstration}
+  (I will not post the code due to security reasons.)
+\end{frame}
+
+\begin{frame}{For Next Week}
   If we have time, we do the prerequisites together.
   Else, it's homework.
 \end{frame}
