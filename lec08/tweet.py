@@ -31,6 +31,7 @@ class MyStreamListener(tweepy.StreamListener):
         #wait for 15 minutes?
         if status_code == 420:
             #returning False in on_error disconnects the stream
+            print("we have reached our limit")
             return False
 
         # returning non-False reconnects the stream, with backoff.
