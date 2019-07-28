@@ -1,0 +1,123 @@
+\documentclass{beamer}
+\usepackage{inconsolata}
+\usepackage{caption}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{subfig}
+\usepackage{cooltooltips}
+\usepackage{hyperref}
+\usepackage{perpage}
+\usepackage[normalem]{ulem}
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
+\input{../langListingMonokai}
+
+\newenvironment{enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=pink,
+}
+
+\MakePerPage{footnote}
+
+\title{Python 101}
+\subtitle{Lec -1 \\ Real Life Applications}
+\author{thoum}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Why Python}
+One of the reasons we learn Python is the various libraries others have written
+  for Python.\\ We don't have to start from scratch.
+\end{frame}
+
+\begin{frame}
+\frametitle{Why Python}
+Numpy: Calculation\\
+OpenCV: Image Processing\\
+Request: Web crawling\\
+Keras: Machine Learning\\
+KoNLPY: Korean Natural Language Processing\\
+Ren'Py: Visual Novel Engine\\
+\ldots you name it.
+\end{frame}
+
+\begin{frame}
+\frametitle{Today's topic}
+Parse tweets on twitter, use bag of words model, so that it can be the
+  basis for many possible applications.
+\end{frame}
+
+\begin{frame}{Tweepy}
+  Learning how to use external libraries by reading their documents is
+  important.\\
+  \href{https://tweepy.readthedocs.io/en/latest/streaming\_how\_to.html}{How to
+  get twitter live stream}
+\end{frame}
+
+\begin{frame}{TL;DR?}
+  I provided a skeleton code with explanations.\\
+  \href{https://github.com/indiofish/python\_tutor/blob/master/lec08/tweet.py}{Download}
+\end{frame}
+
+\begin{frame}{I want more than names and texts}
+  \href{https://developer.twitter.com/en/docs/tweets/sample-realtime/api-reference/get-statuses-sample}{Other
+  fields}
+\end{frame}
+
+\begin{frame}{Run It!}
+\end{frame}
+
+\begin{frame}{Saving?}
+  Look up:
+  \href{https://www.google.com/search?q=python+save+list+as+file}{saving
+  files}
+\end{frame}
+
+\begin{frame}{Bag of Words}
+  \begin{center}
+  \includegraphics[width=80mm]{./bow.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Bag of Words Model}
+  Ignore order of the text. Focus on word count.\\
+  Simple yet strong; good for document classification.($e.g.$ spam filtering)\\
+  What class can we use?
+\end{frame}
+
+\begin{frame}{The Crude Version}
+  We can split our text by spaces, get word count.\\
+  We can look at most common words, number of positive words, number of
+  negative words... yada yada to analyze sentiment on that topic.($e.g.$ Todays
+  weather? Stock? Politicians?)
+\end{frame}
+
+\begin{frame}{Try It!}
+  Get the top 5 most common words related your query.(Don't forget to exclude
+  the query itself; it will \textit{always} be included.)
+\end{frame}
+
+\begin{frame}{For the Future: The Improved Version}
+  Unlike English, Korean vocabs are not simply split by spaces.\\
+  Try this: \href{https://konlpy-ko.readthedocs.io/ko/v0.4.3/}{KoNLPy}
+\end{frame}
+
+\begin{frame}{Useful References for the Future}
+  Multiprocessing in Python : Useful if you need speed.\\
+  Request Module : Useful when interacting with websites.\\
+  Time Complexity : Useful if you want to analyze your code.\\
+  \href{https://acmicpc.net}{Baekjoon} : Useful if you want to practice some
+  language or algorithms.\\
+  \href{https://www.google.com}{Google} : Can't stress enough.\\
+  \href{https://www.stackoverflow.com}{StackOverFlow} : Can't stress enough.\\
+\end{frame}
+
+\end{document}

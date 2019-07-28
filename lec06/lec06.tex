@@ -34,7 +34,7 @@
 
 \begin{frame}
 \frametitle{Programming up till now}
-Procedure-Oriented Programming
+Procedure-Oriented Programming\\
 We pass values to functions, get values, pass them to another function....
   \begin{center}
   \includegraphics[width=80mm]{./code.png}
@@ -53,205 +53,193 @@ We pass values to functions, get values, pass them to another function....
   View programs as object communicating with each other.
 \end{frame}
 
-\begin{frame}
-\frametitle{Objects????}
-  Integers are objects (of the int class).\\
-  Strings are objects (of the str class).\\
-  [1,2,3].sort() are their class methods, and len([1,2,3]) returns their
-  internal data; length.
+\begin{frame}{Objects}
+  Integers are objects (of the int class).
+
+  Strings are objects (of the str class).
+
+  $[1,2,3].sort()$ are their class methods, and $len([1,2,3])$ returns their
+  internal data: length
 \end{frame}
 
 \begin{frame}
 \frametitle{Creating Classes of our own}
-  Note, that you won't be using classes so much unless you write bigger
-  programs. So, for the pure fun of it, let's make a baseball game.
+  We don't usually use classes so much unless we start writing bigger programs.
+
+  The usual Class tutorials force us to create boring examples, like a barking
+  dog and a meowing cat.
+
+  We are going to build a basis for a simple RPG game.
 \end{frame}
 
-\begin{frame}{Dictionary}
-  Similar to a list, but instead of using \textit{int} as indices, we can use
-  arbitrary objects\footnote{those that are
-  \href{https://docs.python.org/2/glossary.html\#term-hashable}{hashable}}
-  as indices(or we call them keys)
+\begin{frame}{The Basis}
+  There are two characters in this game(for now).
 
-  Instead of comparing the key with every key it has, \textit{dictionary} does
-  it efficiently.
-  \footnote{\href{https://en.wikipedia.org/wiki/Collision_(computer_science)}{well, most of the time}}
+  The boss, and you.
+
+  They are both \textit{beings}(there are other beings like the halflings,
+  dragons, darkelves...).
 \end{frame}
 
-\begin{frame}{How?}
-  Imagine how we use an actual Dictionary. We don't start from 'aardvark' to
-  look up 'floccinaucinihilipilification'.
-  We start from the F section.\\
-
-  We have mapped 'floccinaucinihilipilification' to 'f', so that we don't have
-  to compare every word; we just compare with those in the F section.
-  We call this mapping $hashing$.
+\begin{frame}{Beings}
+  This becomes the basis(or the \textit{superclass, parentclass}) of all living things that freely
+  roam the grounds of the middle earth.  Every \textit{being} can be
+  characterized by a name, HP, MP, and their race.
 \end{frame}
 
-\begin{frame}{Hashing}
-  Mapping data of arbitrary size onto data of a fixed size.
-
-  Mapping words to its first letters, mapping students to student IDs,
-  mapping your socks to the colors of white, grey and black to pair them, they are all hashing.
-\end{frame}
-
-\begin{frame}{Hashing Example}
-  $a=1, b=2, ...\ z=26$\\
-  score of a word = $\Sigma value(c_i)\ mod\ 101$
-  \begin{lstinputlisting}
-    {rough_hash.py}
+\begin{frame}{Beings code}
+  \begin{lstinputlisting}[firstline=1, lastline=23]
+    {./being.py}
   \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{Hashing}
-  Hashing by itself is an important topic with wide range of usage(Encryption,
-  Bitcoins...), but will not go into further details.
-\end{frame}
-
-\begin{frame}{Using Dictionaries}
-  \begin{lstinputlisting}
-    {dict_example.py}
+\begin{frame}{Explanation}
+  Names of classes begin with capital letters. (Just a convention, but follow
+  it.)
+  \begin{lstinputlisting}[firstline=1, lastline=1]
+    {./being.py}
   \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{Using Dictionaries}
-  \begin{lstinputlisting}
-    {dict_example2.py}
+\begin{frame}{Explanation}
+  We annotate classes and functions with triple quotes.
+  \begin{lstinputlisting}[firstline=1, lastline=2]
+    {./being.py}
   \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{Using Dictionaries}
-  Operations on iterables(\textit{e.g.} len()) is possible on dictionaries as
-  well.
-\end{frame}
-
-\begin{frame}{List vs Dictionary}
-  Input: 151 pokemon's name and number.\\
-  Output: Print the pokemon's number when given name.
-\end{frame}
-
-\begin{frame}{List Ver.}
-  \begin{lstinputlisting}
-    {poke_list.py}
-  \end{lstinputlisting}
-\end{frame}
-
-\begin{frame}{Dict Ver.}
-  \begin{lstinputlisting}
-    {poke_dict.py}
-  \end{lstinputlisting}
-\end{frame}
-
-\begin{frame}{Performance?}
-
-\end{frame}
-
-\begin{frame}{set}
-  Unordered collection of distinct hashable objects.\\
-  Used for membership, removing duplicates and so on.
-\end{frame}
-
-
-\begin{frame}{set examples}
-  removing duplicates
-  \begin{lstinputlisting}
-    {./set_example.py}
-  \end{lstinputlisting}
-\end{frame}
-
-\begin{frame}{set examples}
-  testing membership\\
-  list version: 2.978s, set version: 0.044s
-  \begin{lstinputlisting}
-    {./set_membership.py}
-  \end{lstinputlisting}
-\end{frame}
-
-\begin{frame}{set examples}
-  For other operations like union(), intersection(), difference(), look
-  \href{https://docs.python.org/2/library/stdtypes.html\#set}{here}.
-\end{frame}
-
-\begin{frame}{Counter}
-  Counts occurrences
-  \begin{lstinputlisting}
-    {./counter_example.py}
-  \end{lstinputlisting}
-\end{frame}
-
-\begin{frame}{deque}
-  Double Ended Queue
-
-  Use instead of \textit{list} when inserting, popping happens at the beginning
-  of the list. \textit{e.g.} keeping track of values for moving average?\\
-  Insert, pop at the beginning of the list creates an overhead of
-  shifting every other element to the left.\\
-\end{frame}
-
-\begin{frame}{deque vs list}
-  list:3.920s, deque: 0.015s
-  \begin{lstinputlisting}
-    {./deque_list.py}
+\begin{frame}{Explanation}
+  Class Variables are shared by all instances of the class.
+  We will see in detail later.
+  \begin{lstinputlisting}[firstline=1, lastline=5]
+    {./being.py}
   \end{lstinputlisting}
 \end{frame}
 
 
-\begin{frame}{deque vs list}
-  List outperforms deque in random access\\
-  list:0.111s, deque: 3.597s
-  \begin{lstinputlisting}
-    {./deque_access.py}
+\begin{frame}{Explanation}
+  Methods whose names are surrounded by 2 underscores
+  (\textit{\_\_XXX\_\_}) are
+  internal methods.
+  They are not meant to be called by the user; they are
+  automatically called based on varying situations. We will look into this
+  later on.
+  \begin{lstinputlisting}[firstline=1, lastline=7]
+    {./being.py}
   \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{What to use?}
-  In choosing the right $thing$ to use, having a slight idea of complexity
-  would help.
+\begin{frame}{Explanation}
+  \_\_init\_\_ is automatically called upon the creation of an object of the
+  class.
+  \begin{lstinputlisting}[firstline=7, lastline=14]
+    {./being.py}
+  \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{Time/Memory Complexity}
-  How long does an operation take? How much memory does it use?\\
+\begin{frame}{Explanation}
+  Class methods are same as the functions we have learned, but for one
+  \textbf{difference}. They need an extra argument at the beginning of the
+  parameter list.\\\textit{But} we \textbf{do not} pass a value for this parameter when we
+  \textbf{use} it. The parameter is used to indicate \textit{itself}, hence the
+  \textit{\textbf{self}}.(Just a convention, but follow it.)
+  \begin{lstinputlisting}[firstline=5, lastline=8]
+    {./being.py}
+  \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{Time Complexity}
-  When input size is $N$
-  Some operation might take constant time. \textit{e.g.} lst[i]
-
-  Some operation might take time proportional to N.
-
-  \textit{e.g.} iterating over a list
-
-  Some operation might take time proportional to $N^{2}$.
-
-  \textit{e.g.} matrix multiplication\\
-
-  Some operation might take time proportional to $Nlog(N)$.
-
-  \textit{e.g.} sorting
+\begin{frame}{Explanation}
+  The fields(object variables) are created by \_\_init\_\_.\\
+  In English, its like saying my$self$'s $name$ is $name$(given by
+  \_\_init\_\_).
+  \begin{lstinputlisting}[firstline=7, lastline=12]
+    {./being.py}
+  \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{Time-Memory Tradeoff}
-  Things can be sped up by using memory.
-  We memorized 99dan, so it takes us constant time to answer 9*9.
-
-  We didn't memorize(at least I didn't) every integer multiplication,
-  so it takes us time to answer 938212834 * 41237.
+\begin{frame}{Explanation}
+  To show how we use class/object variables, see the $die(self)$
+  method.\footnote{note the $self$!}
+  This is used when a battle arises (remember, we were pretending to make an RPG game).
+  \begin{lstinputlisting}[firstline=17, lastline=19]
+    {./being.py}
+  \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{Time-Memory Tradeoff}
-  In C, strlen() counts the number of letters, so it takes time proportional to the length of the string.
-
-  In Python, len() returns an internally stored length which is updated everytime the list changes.
-
-  There is a tradeoff between memory, and speed.
+\begin{frame}{Explanation}
+  Just like how we use $self$ to access object variables, we can access Class
+  Variables by their class name (Here, $Being$).\\
+  Note that when an object changes its $class$ variable, other objects also see
+  the change.\\($Class$ variables are not unique to the object).
+  \begin{lstinputlisting}[firstline=20, lastline=22]
+    {./being.py}
+  \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{Time-Memory Tradeoff}
-  Python dicts uses extra memory, and hash computing time, to make
-  access fast enough.
 
-  In fact, we can think that Python itself uses more running time and memory to make coding fast enough.
+\begin{frame}{Using Classes}
+  We usually put Class definitions in different files, but for the sake of
+  simplicity, lets do it in the same file.\\
+  We create an object of a class like the following.
+  \begin{lstinputlisting}[firstline=25, lastline=27]
+    {./being.py}
+  \end{lstinputlisting}
 \end{frame}
 
+\begin{frame}{Using Classes}
+  Two things to note
+  \begin{enumerate}
+    \item We didn't call $\_\_init\_\_$.
+    \item We didn't add $self$.
+  \end{enumerate}
+  \begin{lstinputlisting}[firstline=25, lastline=25]
+    {./being.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Using Classes}
+  We can explicitly use the names of the parameters, for better understanding of the
+  code.\footnote{We can actually do this with all functions.}
+  \begin{lstinputlisting}[firstline=26, lastline=27]
+    {./being.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{The Dragon Slayer}
+  We call an object's method like the following. Familiar?
+  \begin{lstinputlisting}[firstline=29, lastline=29]
+    {./being.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Practice}
+  Type and Try
+\end{frame}
+
+\begin{frame}{Overriding Internal Functions}
+  print((1,2,3)): (1, 2, 3)\\
+  print([1,2,3]): [1, 2, 3]\\
+  print(3): 3\\
+  print(boss): ?\\
+  print(you): ?
+\end{frame}
+
+\begin{frame}{Overriding Internal Functions}
+  To control how $print$ prints a class, we can fill in\\
+  $\_\_repr\_\_$\\
+  The return value has to be of type $string$, and the return value is what is printed.
+\end{frame}
+
+\begin{frame}{Practice}
+  In our $Being$ Class, define the $\_\_repr\_\_$, so that printing an object
+  of $Being$ Class prints its name, and race.
+  ($i.e.$ "This being is a Dragon, of name Smaug")
+\end{frame}
+
+\begin{frame}{Combat}
+  Now we implement combat for Beings.
+  The combat method gets another $Being$, decrease its hp by $3$, and if its hp
+  is less or equal than zero, make it die.
+\end{frame}
 
 \end{document}
