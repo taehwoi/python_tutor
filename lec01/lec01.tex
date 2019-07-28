@@ -2,11 +2,27 @@
 \usepackage{inconsolata}
 \usepackage{color}
 \usepackage{listings}
+\usepackage{hyperref}
+\usepackage{perpage}
 \setbeamertemplate{navigation symbols}{}%remove navigation symbols
 \input{../langListingMonokai}
 
+\newenvironment{enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=pink,
+}
+\MakePerPage{footnote}
+
+
 \title{Python 101}
-\subtitle{Lec01 \\ Python and Primitive Data Types}
+\subtitle{Lec00 \\ Python and Primitive Data Types}
 \author{thoum}
 
 \begin{document}
@@ -44,6 +60,7 @@
 \frametitle{WHY Python?}
   \textcolor{black}{\LARGE{However in Python..}}
 \end{frame}
+
 \begin{frame}
     \begin{lstinputlisting}
       {./hello.py}
@@ -52,10 +69,10 @@
 
 \begin{frame}
 \frametitle{WHY Python?}
-  {\Large{Python lets you\ldots}}
+  {\Large{Python lets you}}
   \begin{itemize}
-    \item Care less about the system details.
-    \item Think at the high level.
+    \item care less about the details.
+    \item think at the high level.
   \end{itemize}
 \end{frame}
 
@@ -112,6 +129,7 @@
   \begin{itemize}
     \item Strings are enclosed in matching (') or (")s.(No difference)
     \item Note that a single character is also a string.
+    \item Strings are Immutable
   \end{itemize}
 \end{frame}
 
@@ -146,7 +164,7 @@
 \end{frame}
 
 \begin{frame}{Containers}
-  Now we start gathering individual values together,
+  Now we start combining individual data together,
   using Containers.
 \end{frame}
 
@@ -158,7 +176,10 @@
 \end{frame}
 
 \begin{frame}{Containers}
-  The only thing you can do with a \textit{container} is membership.
+  If we can check membership, it is a
+  container.\footnote{\footnotesize{\href{https://en.wikipedia.org/wiki/Duck\_typing}{Duck
+  Typing}}}
+
 \end{frame}
 
 \begin{frame}{From Containers to Iterables}
@@ -169,8 +190,8 @@
 
 
 \begin{frame}{Iterables}
-  \textcolor{black}{\large{Possible Operations}}
-  \begin{lstinputlisting}[firstline=4, lastline=19]
+  \textcolor{black}{\large{Possible Operations with Iterables}}
+  \begin{lstinputlisting}[firstline=5, lastline=18]
     {./iters.py}
   \end{lstinputlisting}
 \end{frame}
@@ -204,7 +225,14 @@
 \end{frame}
 
 \begin{frame}{Iterables}
-  \textcolor{black}{\large{Subscription}}
+  \textcolor{black}{\large{Possible Operations with Iterables (Cont')}}
+  \begin{lstinputlisting}[firstline=19, lastline=31]
+    {./iters.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Iterables}
+  \textcolor{black}{\large{Slciing}}
   \begin{lstinputlisting}
     {./subs.py}
   \end{lstinputlisting}
@@ -224,43 +252,51 @@
   \begin{itemize}
     \item range(stop) (== range(0, stop))
     \item range(start, stop)
-    \item range(start, start, step)
+    \item range(start, stop, step)
     \item range is memory efficient, thanks to lazy evaluation.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Practice}
-  Input: a string. \\
-  Check if the input string is a palindrome. Should ignore whitespace.
+\begin{frame}{Getting Inputs}
+  \begin{lstinputlisting}
+    {./basic_interaction.py}
+  \end{lstinputlisting}
 \end{frame}
 
 \begin{frame}{Practice}
-  Input: a string. \\
-  Print the number of words, and the word that comes last in
+  Input: A string\\
+  Output: Print True if the string is a palindrome. Print False otherwise.
+\end{frame}
+
+\begin{frame}{Practice}
+  Input: A string\\
+  Print the number of words in the string, and the word of the string that comes last in
   alphabetical order.
 \end{frame}
 
 \begin{frame}{Practice}
-  Input: a string containing two numbers, seperated by a space.
-  Print the 4$^{th}$ digit by
+  Input: A string containing two numbers, seperated by a space.
+  Output: Print the 4$^{th}$ digit of the product of the two numbers,
   \begin{enumerate}
-    \item Without converting to str.
-    \item After converting to str.
+    \item by converting the product to str.
+    \item without converting the product to str.
   \end{enumerate}
 \end{frame}
 
 \begin{frame}{Practice}
-    \begin{tabular}{c c}
+    \begin{tabular}{|*2c|}
+      \hline
+      Score & Grade \\\hline
       90\ldots100 & A \\
       80\ldots89 & B \\
       70\ldots79 & C \\
       60\ldots69 & D \\
-      under 60 & F
+      under 60 & F\\\hline
     \end{tabular}
     \bigskip
 
-    Input: Number between 0\ldots100.\\
-    Print the corresponding grade, \textit{without} using if.
+    Input: Score between 0\ldots100\\
+    Output: Print the corresponding grade.
 \end{frame}
 
 \end{document}
