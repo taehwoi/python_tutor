@@ -1,4 +1,4 @@
-int_num = 7
+x = 7
 big_num = 999999999999912834092834918234902814
 print(type(x)) # int(eger)
 print(type(big_num)) # also int...
@@ -7,8 +7,8 @@ print(type(0.1)) # float
 
 some_str = "Hello"
 some_otherstr = 'abc'
-some_c = 'c'
-print(type('abc')) # str(ing)
+some_char = 'c'
+print(type(some_otherstr)) # str(ing)
 print(type('c')) # also str
 
 print(type(True)) # bool(ean)
