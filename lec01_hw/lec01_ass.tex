@@ -1,0 +1,181 @@
+\documentclass{article}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{mdwlist}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+\geometry{headheight=2in}
+\geometry{top=1.0in}
+\usepackage{palatino}
+%\usepackage{ulem}
+\usepackage[parfill]{parskip}
+%\renewcommand{\rmdefault}{palatino}
+\usepackage{fancyhdr}
+\input{../langListingMonokai}
+%\pagestyle{fancy}
+
+\newcommand{\infint}{\int_{-\infty}^{\infty}}
+\newcommand{\Ab}{\bm{A}}
+\rhead{}
+\lhead{}
+\chead{%
+  {\vbox{%
+      \vspace{1mm}
+      \large
+      Python practice 1\hfill \\
+    }
+  }
+}
+
+\usepackage{paralist}
+
+\usepackage{todonotes}
+\setlength{\marginparwidth}{2.15cm}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,backgrounds}
+
+\newenvironment{enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\begin{document}
+\thispagestyle{fancy}
+\setcounter{section}{-1}
+
+%% Q1
+\section{Dumb Multiplication}
+When I was a kid, I used to multiply numbers in the following manner:
+$27 \times 33 = 621$.\\
+This calculation is done by concatanating the product of
+each digits.($2\times3=6$ \& $7\times3=21$).\\
+Given a 2-digit integer $N$ and $K$, print the result of dumb multiplying $N$ and $K$.\\
+\noindent\rule{\textwidth}{0.9pt}
+\textit{CONDITION}: $ 10 \le N, K \le 99 $\\
+\textit{EXAMPLE}:\\
+\begin{lstlisting}
+27 33
+
+621
+\end{lstlisting}
+
+\section{Sigma Calculator}
+Given $N$ and $K$, calculate the following:
+$$\sum_{i=N}^{K} i$$\\
+Please refrain from doing something like:
+\begin{lstlisting}
+print(K*(K-1)/2 - (N-1)*(N-2)/2) 
+\end{lstlisting}
+although this is a faster and better solution.\\
+\noindent\rule{\textwidth}{0.9pt}
+\textit{CONDITION}: $N \le K$\\
+\textit{EXAMPLE}:\\
+\begin{lstlisting}
+2 10
+
+54
+\end{lstlisting}
+
+\section{Numbers Numbers Numbers}
+Given 3 integers, print their median and mean. When printing the mean, print up
+to the $2^{nd}$ decimal digit. We can do it via format printing.
+\href{https://www.google.com/search?q=python+format+float+length}{Here's how}
+
+\textit{EXAMPLE}:\\
+\begin{lstlisting}
+3 3 3
+
+3 3.00
+\end{lstlisting}
+
+\begin{lstlisting}
+1 2 17
+
+2 6.66
+\end{lstlisting}
+
+\section{369}
+For positive interger $n$, if $n$ is a multiple of $3$ ($e.g.$ $3,6,9...$) or
+contains $3$ ($e.g.$ 13, 23...), print \textit{CLAP}.\\
+Else, print \textit{SAFE}.\\
+\noindent\rule{\textwidth}{0.9pt}
+\textit{hint}:
+\begin{lstlisting}
+# % is the modulus operator
+print(17 % 2) # == 1
+print(20 % 2) # == 0
+\end{lstlisting}
+\textit{EXAMPLE}:\\
+\begin{lstlisting}
+31
+CLAP
+\end{lstlisting}
+\begin{lstlisting}
+5
+SAFE
+\end{lstlisting}
+
+\section{Anagrams}
+Given 2 strings, print \textit{True} if they are anagrams of each other, and
+print \textit{False} otherwise.\\
+Note: We should ignore whitespaces, and capitalization does not matter.\\
+\noindent\rule{\textwidth}{0.9pt}
+\textit{hint}:
+\begin{lstlisting}
+s = "abc def"
+# creates a new string where whitespace(' ') is replaced by an empty string('')
+# strings are immutable, so .replace() creates a new string
+a = s.replace(' ', '')
+print(a)
+\end{lstlisting}
+\textit{EXAMPLE}:\\
+\begin{lstlisting}
+Dormitory
+Dirty Room
+
+True
+\end{lstlisting}
+\begin{lstlisting}
+Eleven plus two
+Twelve plus one
+
+True
+\end{lstlisting}
+\begin{lstlisting}
+Soju
+Gobchang
+
+False
+\end{lstlisting}
+
+\pagebreak
+\section{YootNori}
+YootNori's result is determined by the number of \textit{Bae}s(represented as
+$0$) and \textit{Deung}s(represented as $1$) of four yoots:\\
+$Do$ (1 $Bae$, 3 $Deung$s), $Gae$ (2 $Bae$s, 2 $Deung$s), $Gul$ (3 $Bae$s, 1
+$Deung$), $Yoot$ (4 $Bae$s), $Moe$(4 $Deungs$).\\
+From the given combination of $Bae$s and $Deung$s, determine the result.\\
+\noindent\rule{\textwidth}{0.9pt}
+\textit{EXAMPLE}:\\
+\begin{lstlisting}
+0
+0
+0
+0
+
+Yoot
+\end{lstlisting}
+\begin{lstlisting}
+0
+1
+1
+0
+
+Gae
+\end{lstlisting}
+\end{document}
