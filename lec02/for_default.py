@@ -3,29 +3,24 @@ for i in range(6):
 
 nums = [1, 2, 3, 4, 5, 6]
 
-# avoid magic numbers
-for i in range(6):
-    print(nums[i])
-print()
-
-# this lets us change nums[i]
+# use len(nums) instead of 6 
+# access list elements with their index
 for i in range(len(nums)):
     print(nums[i])
-    # something new?
     nums[i] += 1
 
-print()
-
-# this lets us read the values
+# get the values
 for e in nums:
     print(e)
-print()
 
+# stop in the middle
 for n in nums:
+    print(n)
     if n == 2:
         print("We found 2!")
         break
 
+# equivalent to print(sum(nums))
 x = 0
 for n in nums:
     x += n

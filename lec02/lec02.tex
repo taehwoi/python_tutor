@@ -7,6 +7,11 @@
 \setbeamertemplate{navigation symbols}{}%remove navigation symbols
 \input{../langListingMonokai}
 
+\hypersetup{
+  colorlinks=true,
+  urlcolor=pink,
+}
+
 \title{Python 101}
 \subtitle{Lec02 \\ Ifs and Loops}
 \author{thoum}
@@ -15,10 +20,13 @@
 \frame{\titlepage}
 
 \begin{frame}[fragile]
-\frametitle{Before we begin}
-  \begin{lstinputlisting}
-    {./misc.py}
-  \end{lstinputlisting}
+\frametitle{Possible Projects}
+  \begin{enumerate}
+    \item Beating sugang.snu.ac.kr's CAPTCHA\\
+      - Digit recognition with kNN
+    \item Music Recognition with kNN
+    \item JoonggoNara Notifier
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -34,12 +42,20 @@ if some_boolean:
   \begin{lstinputlisting}
     {./grades.py}
   \end{lstinputlisting}
+  \href{https://stackoverflow.com/questions/48375753/why-are-chained-operator-expressions-slower-than-their-expanded-equivalent}{*why?}
 \end{frame}
 
 \begin{frame}
 \frametitle{More examples}
   \begin{lstinputlisting}
     {./if_example.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}
+\frametitle{and more examples}
+  \begin{lstinputlisting}
+    {./if_example2.py}
   \end{lstinputlisting}
 \end{frame}
 
@@ -63,7 +79,13 @@ for value in iterable:
 \end{frame}
 
 \begin{frame}{For Loops}
-  \begin{lstinputlisting}
+  \begin{lstinputlisting}[firstline=1, lastline=14]
+    {./for_default.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{For Loops Cont'}
+  \begin{lstinputlisting}[firstline=1, lastline=14]
     {./for_default.py}
   \end{lstinputlisting}
 \end{frame}
@@ -92,16 +114,10 @@ while condition:
 \end{frame}
 
 \begin{frame}{Practice}
-  Print from 1 to 10
-
-  Using for loop and while loop.
-  Hint: \textcolor{white}{if k > 10: break}
-\end{frame}
-
-\begin{frame}{Not So Easy Practice}
   Output: print 99dan from 1 to N.
   Hint: \textcolor{white}{Nest for loops}
 \end{frame}
+
 
 \begin{frame}[fragile]{Practice with stars!}
   Input: N
@@ -124,13 +140,8 @@ while condition:
 \end{frame}
 
 
-\begin{frame}{??????????}
+\begin{frame}[fragile]
   Using for loops, create list of even numbers in [0, 10]
-
-  Hint: \textcolor{white}{Use append and range}
-\end{frame}
-
-\begin{frame}[fragile]{??????????}
   \begin{lstlisting}
 lst = []
 for n in range(0, 11, 2):
@@ -145,19 +156,18 @@ for n in range(0, 11):
 \end{frame}
 
 \begin{frame}[fragile]{Comprehension}
-  new\_list = [exp for var in some\_iter (if condition)]
-
-  In plain text:
-
-  Our NEW\_LIST's elements =
-
-  FOR each VAR in SOME\_ITER, (that meets CONDITION)
-  EXP
-
+  The easy way (and faster!)
   \begin{lstlisting}
-for var in some_iter:
+  lst = [n for n in range(11) if n % 2==0]
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Comprehension}
+  new\_list = [expression $for$ element $in$ iterable ($if$ condition)]\\
+  \begin{lstlisting}
+for element in iterable:
     if condition:
-      new_list.append(exp)
+      new_list.append(expression)
   \end{lstlisting}
 \end{frame}
 
@@ -171,14 +181,13 @@ for var in some_iter:
   Lazy version of comprehension [] $\rightarrow$ ()
 \end{frame}
 
-\begin{frame}{Easy Practice}
-  Input: 10 numbers
-
-  Output: sum of the numbers
-
-  How: Using for loops and list comprehension
+\begin{frame}{Practice}
+  Nth Fibonacci
 \end{frame}
 
+\begin{frame}{Practice}
+  Nth Fibonacci
+\end{frame}
 
 
 
