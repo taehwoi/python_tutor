@@ -9,7 +9,7 @@ for i in range(len(nums)):
     print(nums[i])
     nums[i] += 1
 
-# get the values
+# read the values
 for e in nums:
     print(e)
 

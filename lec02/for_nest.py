@@ -3,7 +3,7 @@ matrix = [[1,2,3], [4,5,6], [7,8,9]]
 #double for-loop
 for row in matrix:
     # prints each column
-    # print(*row)
+    # equiv. to print(*row)
     for e in row:
         print(e, end=' ')
     print()
