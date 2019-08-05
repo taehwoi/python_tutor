@@ -144,27 +144,60 @@ while condition:
   Using for loops, create list of even numbers in [0, 10]
   \begin{lstlisting}
 lst = []
-for n in range(0, 11, 2):
-    lst.append(n)
-
-# or
-
 for n in range(0, 11):
     if n % 2 == 0:
         lst.append(n)
+
+# or
+
+lst = []
+for n in range(0, 11, 2):
+    lst.append(n)
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Comprehension}
   The easy way (and faster!)
   \begin{lstlisting}
-  lst = [n for n in range(11) if n % 2==0]
+  lst = [n for n in range(0, 11, 2)]
+  # we can use if as well
+  lst = [n for n in range(11) if n % 2 == 0]
   \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Performance Comparsion}
+  time python3 test1.py
+  \begin{lstinputlisting}
+  {test1.py}
+  \end{lstinputlisting}
+  real: 12.744s
+\end{frame}
+
+\begin{frame}[fragile]{Performance Comparsion}
+  \begin{lstinputlisting}
+  {test2.py}
+  \end{lstinputlisting}
+  real: 5.019s
+\end{frame}
+
+\begin{frame}[fragile]{Performance Comparsion}
+  \begin{lstinputlisting}
+  {test3.py}
+  \end{lstinputlisting}
+  real: 7.085s
+\end{frame}
+
+\begin{frame}[fragile]{Performance Comparsion}
+  \begin{lstinputlisting}
+  {test4.py}
+  \end{lstinputlisting}
+  real: 1.356s
 \end{frame}
 
 \begin{frame}[fragile]{Comprehension}
   new\_list = [expression $for$ element $in$ iterable ($if$ condition)]\\
   \begin{lstlisting}
+new_list = []
 for element in iterable:
     if condition:
       new_list.append(expression)
@@ -178,20 +211,26 @@ for element in iterable:
 \end{frame}
 
 \begin{frame}[fragile]{Generators}
-  Lazy version of comprehension [] $\rightarrow$ ()
+  Lazy version of comprehension [$x$ for $x$ in...] $\rightarrow$ ($x$ for $x$ in...)
 \end{frame}
 
-\begin{frame}{Practice}
-  Nth Fibonacci
+\begin{frame}[fragile]{Performance Comparsion}
+  \begin{lstinputlisting}
+  {test5.py}
+  \end{lstinputlisting}
+  real: 0.053s\\
+  Fast, but has limited usage.
 \end{frame}
 
-\begin{frame}{Practice}
-  Nth Fibonacci
+\begin{frame}[fragile]{Practice}
+Mismatched ()s ($e.g.$ "(()", ")(()" ) are painful when we are coding. Write a
+program that prints 'yes' when the ()s match, and 'no' when they do not match.
+\begin{lstlisting}
+())()
+no
+(())()
+yes
+\end{lstlisting}
 \end{frame}
-
-
-
-
-
 
 \end{document}
