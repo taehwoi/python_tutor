@@ -1,0 +1,143 @@
+\documentclass{article}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{mdwlist}
+\usepackage{kotex}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+\geometry{headheight=2in}
+\geometry{top=1.0in}
+\usepackage{palatino}
+\usepackage{ulem}
+\usepackage[parfill]{parskip}
+%\renewcommand{\rmdefault}{palatino}
+\usepackage{fancyhdr}
+\input{../langListingMonokai}
+%\pagestyle{fancy}
+
+\newcommand{\infint}{\int_{-\infty}^{\infty}}
+\newcommand{\Ab}{\bm{A}}
+\rhead{}
+\lhead{}
+\chead{%
+  {\vbox{%
+      \vspace{1mm}
+      \large
+      Python practice 2\hfill \\
+    }
+  }
+}
+
+\usepackage{paralist}
+
+\usepackage{todonotes}
+\setlength{\marginparwidth}{2.15cm}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,backgrounds}
+
+\newenvironment{enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\begin{document}
+\thispagestyle{fancy}
+\setcounter{section}{-1}
+
+%% Q1
+\section{Star Starry Night~★}
+%\noindent\rule{\textwidth}{0.9pt}
+\textit{EXAMPLE}:
+\begin{lstlisting}
+3
+*
+**
+***
+\end{lstlisting}
+%\noindent\rule{\textwidth}{0.9pt}
+
+%% Q2
+\section{Starry Starry Night~★}
+\textit{EXAMPLE}:
+\begin{lstlisting}
+3
+*****
+ ***
+  *
+\end{lstlisting}
+
+\section{99 dan}
+Print out the following:
+\begin{lstlisting}
+1 * 1 = 1
+1 * 2 = 2
+   ...
+9 * 9 = 81
+\end{lstlisting}
+We \textit{can} construct the string by concatanation like this:
+\begin{lstlisting}
+str(8) + ' * ' + str(9) + ' = ' + str(72)
+\end{lstlisting}
+but there is a better way.
+\href{https://www.google.com/search?q=python+string+format}{Google It!}
+
+%% Q3
+\section{Lotto}
+Create and print a list of length \textit{6}, where each element is a random
+integer in range $[1, 45]$.
+
+\begin{lstlisting}
+lst = # Do Something
+print(*lst)
+\end{lstlisting}
+
+To learn how to generate random numbers
+\href{https://www.google.com/search?q=python+random+number}{Google It!}
+When we use \textit{list comprehension}, we can do this with a single line of code.
+
+
+\section{Buying Lotto}
+Now, get input from user(us) $until$ the user has correctly guessed the 7 numbers
+created above, to become a millionaire.\\
+
+\section{2nd}
+Create a list of 100 random numbers.\\
+$OUTPUT$: the 2nd largest number from the list.\\
+The following solution is pretty obvious, but try solving it $without$ sorting the list.
+\begin{lstlisting}
+print(sorted(lst[-2]))
+\end{lstlisting}
+
+\section{Acronymizer}
+Given a series of words, print its acronym. An acronym should be all capital
+letters, with $'.'$ in between the characters.
+\textit{EXAMPLE}:
+\begin{lstlisting}
+come late and start sleeping
+C.L.A.S.S.
+\end{lstlisting}
+
+\section{esrever}
+In Python, we can create a reversed list(or any iterable), by
+$iterable[::-1]$. However, this can be memory inefficient as it creates a new
+iterable. Write a code that reverses a list without creating a new list.\\
+\textit{hint}: The following code swaps the value of two variables.
+\begin{lstlisting}
+x = 0
+y = 1
+x, y = y, x
+print(x, y)
+\end{lstlisting}
+
+\section{Fibonacci}
+The Fibonacci numbers are defined as following:
+$$F_0 = 0, F_1 = 1$$
+$$F_n = F_{n-1}+F_{n-2}, n > 1$$
+Input: N, Output: $N^th$ Fibonacci.\\
+Check that this program also prints $F_0$ and $F_1$ well, for input 0 and 1.\\
+\end{document}
