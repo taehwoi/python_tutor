@@ -1,0 +1,121 @@
+\documentclass{article}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{mdwlist}
+\usepackage{kotex}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+\geometry{headheight=2in}
+\geometry{top=1.0in}
+\usepackage{palatino}
+\usepackage{ulem}
+\usepackage[parfill]{parskip}
+%\renewcommand{\rmdefault}{palatino}
+\usepackage{fancyhdr}
+\input{../langListingMonokai}
+%\pagestyle{fancy}
+
+\newcommand{\infint}{\int_{-\infty}^{\infty}}
+\newcommand{\Ab}{\bm{A}}
+\rhead{}
+\lhead{}
+\chead{%
+  {\vbox{%
+      \vspace{1mm}
+      \large
+      Python practice 2.5\hfill \\
+    }
+  }
+}
+
+\usepackage{paralist}
+
+\usepackage{todonotes}
+\setlength{\marginparwidth}{2.15cm}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,backgrounds}
+
+\newenvironment{enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\begin{document}
+\thispagestyle{fancy}
+\setcounter{section}{-1}
+
+%% Q1
+\section{Look and say sequence}
+  Print the $N^{th}$ look and say sequence, a.k.a ant sequence.\\
+  1, 11, 12, 1121, 122111....
+  The sequence goes like this:\\
+  1$\rightarrow$11(1이 
+  1개)$\rightarrow$12(1이 2개)$\rightarrow$1121(1이 1개, 2가 1개)$\rightarrow$122111(1이 2개, 2가 1개, 1이 1개)\\
+\textit{EXAMPLE}:
+\begin{lstlisting}
+3
+12
+\end{lstlisting}
+%\noindent\rule{\textwidth}{0.9pt}
+
+%% Q2
+\section{Prime?}
+Given input $N$($2\le N \le 10,000,000,000$), Print 'True' if $N$ is a prime number. Print 'False' otherwise. 
+\textit{EXAMPLE}:
+\begin{lstlisting}
+1217
+True
+\end{lstlisting}
+
+%% Q3
+\section{Wrd Shrtnr}
+Given input, remove vowels(\textit{a,e,i,o,u}).\\
+\textit{EXAMPLE}:
+\begin{lstlisting}
+chicken
+chckn
+\end{lstlisting}
+
+%% Q4
+\section{Digit Counter}
+Given N, print the occurrence of each digit without using the Counter
+class.(The answer is similar to how Counter works)\\
+\textit{EXAMPLE}:
+\begin{lstlisting}
+12353
+0:0
+1:1
+2:1
+3:2
+4:0
+5:1
+6:0
+7:0
+8:0
+9:0
+\end{lstlisting}
+
+\section{Where are you?}
+We can easily get the maximum value of a list by $max(lst)$.\\
+But finding its index is not as easy. Write a program that prints the index of
+the maximum value. (Note that the index starts from 0).
+\begin{lstlisting}
+10 3 5 100 9
+3
+\end{lstlisting}
+
+\section{Genetic Algorithm}
+Genetic Algorithm is an optimization technique that mimics the process of
+evolution and natural selection. This time, we are going to find the largest
+number in between ($0_{(2)}, 1111111111_{(2)}$) using GA. The answer
+is obviously $1111111111_{(2)}$, but lets see if natural selection can figure that out.
+Please fill in the $TODO$s. Reading this link would help:
+\href{https://namu.wiki/w/유전알고리즘}{유전알고리즘}.\\
+Download "genetic\_skelton.py" to start.
+
+\end{document}
