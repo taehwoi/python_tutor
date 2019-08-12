@@ -32,15 +32,18 @@
 \frametitle{Python Functions}
 \begin{lstlisting}
 def f(x):
+    # code block belonging to the function
     r = x+1
     return r
+# end of function
 
 def g(x):
     return math.log(x)
 
-#Note that each x is unique to the function
+# Note that each x is unique to the function
 
-print(f(3)) # f(3) becomes 3+1
+# Calling the function
+print(f(3)) # f(3) == 4
 print(f(3))
 \end{lstlisting}
 \end{frame}
@@ -72,6 +75,7 @@ print(f(3))
 \begin{itemize}
   \item Less code to read
   \item Fix once, fix everywhere
+  \item DRY: Don't Repeat Yourself
 \end{itemize}
 \end{frame}
 
@@ -91,39 +95,37 @@ print()
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Understanding Functions}
-  Some functions(\textit{pure} functions) are just values
+\begin{frame}{Understanding Functions: Pure}
   \begin{lstinputlisting}
     {./pure_function.py}
   \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{Understanding Functions}
-  Some functions have side effects
+\begin{frame}{Understanding Functions: Impure}
   \begin{lstinputlisting}
     {./side_effect.py}
   \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{Understanding Functions}
-  Some functions have side effects (cont'd)
+\begin{frame}{Understanding Functions: Impure}
   \begin{lstinputlisting}
     {./side_effect2.py}
   \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{Detour: Wait..What just happened?}
-  Function parameters can be thought as names or labels (in python).\\
+\begin{frame}{Detour: Understanding Binding}
+  Function parameters and variables can be thought as labels.\\
 
-  Imagine that function is a dark room.\\
-  We can only interact with outer objects that enters this room by 
-  giving them \textcolor{green}{glow-in-the-dark} stickers with their names on it.
+  The variables names(labels) are \textit{local} to the function,
+  called the $scope$ of the variable.
 \end{frame}
 
-\begin{frame}[fragile]{Detour: Wait..What just happened?}
-  Here, we gave outer $x$ the sticker that says l.
+\begin{frame}[fragile]{Detour: Understanding Binding}
+  Here, the local $l$ points to the same list $x$ is pointing.
 
-  By l[0], we were able to reach x[0].
+  By $l[0]=3$, that list(the one $x,y$ is pointing)'s first element points to 3.
+
+  Thus, it changes x.
   \begin{lstlisting}
 x = [1,2,3]
 def change_element_of_list(l):
@@ -133,23 +135,28 @@ print(x)
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Detour: Wait..What just happened?}
-  When we $l = 2$, we took the sticker from $x$ and gave it to $2$.\\
-  Now, we can't see $x$ in the dark.
+\begin{frame}[fragile]{Detour: Understanding Binding}
+  Here, the local $y$ points to the same 3 $x$ is pointing.
 
+  By $y = 4$, the local $y$ now points to 4.
+  ($x, y$ nows points to different things)
+
+  Thus, $x==3$.
   \begin{lstlisting}
-x = [1,2,3]
-def change_without_global(l):
-    print(l)
-    l = 2
-change_without_global(x)
-print(x)
+x = 3
+def change_4(y):
+    print(y)
+    y = 4
+    print(y)
+change_4(x)
+print('x is now:', x)
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Detour: Wait..What just happened?}
-  Using $global$ is like giving a permanent sticker to $y$, with name $y$ written
-  on it.
+\begin{frame}[fragile]{Detour: Understanding Binding}
+  We use $global$ to $assign$ value to a name defined outside the function.
+  We can use the values without using $global$, but not recommended in large
+  programs as it is unclear where the variable was defined.
   \begin{lstlisting}
 y = [1,2,3]
 def change_by_global():
@@ -159,27 +166,37 @@ print(y)
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Detour: Wait..What just happened?}
-  Confusing? 
-  Good news: We will get used to it.\\
-  Bad news: Side effects are inevitable.\\
-  So let's try our best to keep it to a minimum.
+\begin{frame}[fragile]{Detour: Understanding Binding}
+  Here, the global $y$ points to the $y$ outside the function.
 
+  By $y = 4$, the global $y$ now points to 4.
+
+  Thus, $y$ is changed.
+  \begin{lstlisting}
+y = [1,2,3]
+def change_by_global():
+    global y
+    y = 3
+print(y)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Detour: Understanding Binding}
   \href{https://stackoverflow.com/questions/575196/why-can-a-function-modify-some-arguments-as-perceived-by-the-caller-but-not-oth}{Click
   for details.}
 \end{frame}
 
-\begin{frame}{Function Practice}
+\begin{frame}[fragile]{Function Practice}
   Choose any code we have written (giving grades? printing stars? is
   string a palindrome?) and turn it to a function.
-\end{frame}
 
-\begin{frame}{Recursion}
-  What is recursion?  It is...
-\end{frame}
+  \begin{lstlisting}
+def stars(n):
+    for i in range(1, n+1):
+        print('*' * i)
 
-\begin{frame}{Recursion}
-  What is recursion?  It is...
+stars(int(input()))
+  \end{lstlisting}
 \end{frame}
 
 \begin{frame}{Recursion}
@@ -198,14 +215,9 @@ print(y)
   A thing is defined in terms of itself or of its type.
 \end{frame}
 
-\begin{frame}{Recursion????}
-  What?
-\end{frame}
-
 \begin{frame}{Back to highschool}
   \includegraphics[width=100mm]{./jumhwasik.png}\\
-  \href{https://ko.khanacademy.org/math/algebra/sequences/constructing-arithmetic-sequences/a/converting-recursive-and-explicit-formulas-of-arithmetic-sequences}{img
-  source}
+  *\tiny{https://ko.khanacademy.org/}
   
 \end{frame}
 
@@ -217,45 +229,52 @@ print(y)
 
 \begin{frame}{In English}
   Assume $a(x)$ will somehow, magically calculate $a(n)$\\
-  Then, just by writing out the definition, we are done.
+  Then, write out the definition, we are done.
 \end{frame}
 
-\begin{frame}{In Your Brain}
-  Imagine what happens if we call $a(3)$.
+\begin{frame}{How it works}
+  Calling $a(3)$.
   \begin{align*}
 a(3) = &a(2) + 2\\
 &a(2) = a(1) + 2\\
-    &\phantom{{ab}={ab}} a(1) = a(0) + 2\\
-    &\phantom{{ab}={ab}{ab}={ab}} a(0) = 3\\
-    &\phantom{{ab}={ab}} a(1) = 5\\
-    &a(2) = 7\\
-a(3) = &9
+    &\phantom{{ab}={ab}} a(1) = 3\\
+    &a(2) = 5\\
+a(3) = &7
   \end{align*}
-  What if $a(0)$ is not defined?\\
+  What if $a(1)$ is not defined?\\
 \end{frame}
 
 \begin{frame}{Importance of Base Case}
   $a(-1) \rightarrow a(-2) \rightarrow a(-3) ...$
 
 
-  \textcolor{red}{Forever and ever and ever and ever and ever and ever and
-  ever and ever and ever and ever and ever and ever and ever and ever and ever
-  and ever and ever and ever and ever and ever and ever and ever and ever and
-  ever and ever and ever and ever and ever and ever and ever and ever and ever
-  and ever and ever and ever and ever and ever and ever and ever and ever and
-  ever and ever and ever and ever and ever and ever and ever and ever and ever
-  and ever and ever and ever}
+  \textcolor{red}{Forever and ever}
   until we run out of memory.\footnote{Or not, look up
   \href{https://www.google.com/search?q=call+stack}{call stack} and
   \href{https://www.google.com/search?q=tail+call+optimization}{tail call
   optimization}}
 \end{frame}
 
-\begin{frame}{Recursion Practice}
-  We used $for$ to implement the fibonacci sequence.
-  Rewrite it using functions and recursion.\footnotemark[1]
+\begin{frame}[fragile]{Recursion Practice 0}
+  Write a recursive function that doubles all the element in the list.
+hint: If a smaller problem(and smaller here means...) is magically solved, what do we do?
+  \begin{lstlisting}
+def doubles(l):
+    if len(l) == 0:
+        # base case
+        return []
+    else:
+        #FILL ME IN
 
-  \footnotetext{Chruch-Turing thesis proves that this is $always$
+print(doubles([1,2,3]))
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Recursion Practice 1}
+  We used $for$ to implement the fibonacci sequence.
+  Rewrite it using recursion.\footnotemark[1]
+
+  \footnotetext{Church-Turing thesis proves that this is $always$
   possible, given enough memory. \href{https://stackoverflow.com/questions/931762/can-every-recursion-be-converted-into-iteration}{Details
   here}}
 \end{frame}
@@ -267,10 +286,27 @@ a(3) = &9
 \end{frame}
 
 \begin{frame}{Food for thought}
-  Done?\\
   Does it print $fibonacci(10)$ well? What about $fibonacci(100)$?\\
-  Compare it to the $for$ version. Why is it so slow? Try the $In Your Brain$
-  exercise.
+  Compare it to the $for$ version. Why is it so slow?
 \end{frame}
+
+\begin{frame}{Dynamic Programming: Memoization}
+  It is slow because there is repetitive calculation.\\
+  If we can store the calculation results somewhere and check before we start
+  calculation, we can save time. (Tradeoff between memory and time)
+\end{frame}
+
+\begin{frame}{DP Solution - Recursive}
+  \begin{lstinputlisting}
+    {./fib_dp.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{DP Solution - For Ver.}
+  \begin{lstinputlisting}
+    {./fib_for_dp.py}
+  \end{lstinputlisting}
+\end{frame}
+
 
 \end{document}

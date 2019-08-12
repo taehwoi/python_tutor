@@ -1,8 +1,8 @@
 def a(n):
     # Base Case:
-    # a(1) = 3
     if n == 1:
+        # a(1) = 3
         return 3
-    # a(n) = a(n-1) + 2
     else:
+        # a(n) = a(n-1) + 2
         return a(n-1) + 2

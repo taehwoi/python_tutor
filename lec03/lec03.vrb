@@ -1,0 +1,13 @@
+\frametitle{Recursion Practice 0}
+Write a recursive function that doubles all the element in the list.
+hint: If a smaller problem(and smaller here means...) is magically solved, what do we do?
+  \begin{lstlisting}
+def doubles(l):
+    if len(l) == 0:
+        # base case
+        return []
+    else:
+        #FILL ME IN
+
+print(doubles([1,2,3]))
+  \end{lstlisting}
