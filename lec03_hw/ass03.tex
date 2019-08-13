@@ -156,7 +156,44 @@ print(is_palindrome(s))
 \end{lstlisting}
 \textit{Optional}: Can it calculate numbers like 100? Try memoization.
 
-\pagebreak
+\section{Binary Search}
+Remember the Up\&Down games during the parties?
+A participant would guess a number in $range(1, 51)$, and the other player
+would tell you if the answer is lower, or higher than the guess.
+The optimal strategy would be to call the median (25$\rightarrow$12 if down, 37
+if up), that halves
+the search space everytime.
+
+Binary Search is an algorithm that does exactly this. Write a recursive
+$bin\_search(lst, n)$, finds n from an already sorted list.
+It would return True if n is in our list, and False
+otherwise.
+
+\textit{hint}: If the median of the list is the value we are looking for, return True.
+Else, we will have to look at the right half, or the left half.
+
+\begin{lstlisting}
+def bin_search(lst, n):
+    # FILL_ME_IN
+
+
+l = sorted(#some random list)
+print(bin_search(l, n))
+\end{lstlisting}
+
+\section{The idea behind dynamic programming}
+Given a list of integers, finding its partial sum is
+easy: $sum(lst[start:end])$. However, if we were to calculate the partial sum
+100,000,000 times, it would approximately take $(end-start) * 100,000,000$
+times to calculate it.
+
+Write a function $partial\_sum(start, end)$ that calculates
+$sum(lst[start:end])$ fast, by storing some data in advance.
+
+\textit{hint}: $sum(lst[start:end])$ can be expressed as the difference of
+certain two values.
+
+
 %% Q3
 \section{Prefix Calculator}
 We usually write mathematical expressions this way:
@@ -219,37 +256,43 @@ is nothing to do; just return $n$.
 When it's a tuple, we have to do more. Again, assuming that
 $calculate(smaller\_exp)$ will magically calculate the results would help.\\
 
-%% Q5
-\section{Challenge: Compressing DNAs}
-DISCLAIMER: This problem can be challenging. Also, I am not a biology major so if there is anything wrong here, please
-forgive me.
+\section{Challenge: DP and optimization}
+DP and optimization go along well, because an optimized solution of smaller
+problem often lead to an optimized solution of the whole.
 
-DNAs are composed of $a,g,c,t$(am I right?). They are very long(am I right?).
-Therefore, there is ongoing research on compressing DNA sequences for data
-efficieny. One method of compressing DNAs utilizes the fact that multiple DNAs share
-common patterns(am I right?).
+Consider the following situation; We want to travel to Europe(\textit{or any
+country you like}) $N$ days from now, and we are going to work part-time for
+the tickets. It would be great if we can work every single day, but we have to
+take a rest - we can't work 3 consecutive days.
 
-For example, a\textbf{gctga}ccgt and cc\textbf{gctga}tt share \textbf{gctga}.
-If we can find the \textit{longest common substring} of two DNAs, we can simply
-replace it(= gctga) with $X$. This way, agctgaccgt becomes aXccgt, and ccgctgatt
-becomes ccXtt.
-
-Write a program that finds the longest common substring of two
-DNA sequences.
+Given a list of $N$ integers, each representing the money we can earn,
+calculate the maximum amount of money we can earn.
 
 \begin{lstlisting}
-agctgaccg
-tccgctgatt
-
-gctga
+10 20 30 40 50 60 
+160
 \end{lstlisting}
+
+\textit{hint}: We can work 20,30,50,60 to earn 160. This is larger than any
+other combination($e.g.$ 10,20,40,50). One approach would be a recursive one.
+Let $solution(d)\text{ = maximum money earned while working on $\text{d}^{th}$ day}$.
+Then we can calculate $solution(d)$ by comparing two diffrent cases.
+One would be adding $\text{d}^{th}$ and $\text{d-1}^{th}$ payroll with the maximum money we earned 3 days ago,
+the other would be adding $\text{d}^{th}$ payroll with the maximum money we earned 2
+days ago.
+
 
 %% Q4
 \section{Challenge: Decompressing DNAs}
 DISCLAIMER: I am not a biology major so if there is anything wrong here, please
 forgive/tell me.
 
-Another compression method focuses on a single strain of DNA. We can compress a DNA sequence by writing out the repeated pattern
+DNAs are composed of $a,g,c,t$(am I right?). They are very long(am I right?).
+Therefore, there is ongoing research on compressing DNA sequences for data
+efficieny. One method of compressing DNAs utilizes the fact that common
+patterns occur in a DNA strain (am I right?).
+
+We can compress a DNA sequence by writing out the repeated pattern
 in the following manner: $K(S)$. K is a $single$ digit integer indicating the number of
 repetition, and S is the repeated sequence, which can be compressed as well.
 
