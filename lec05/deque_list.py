@@ -1,5 +1,5 @@
 from collections import deque
-import timeit
+import time
 
 l = []
 q = deque() # an empty deque

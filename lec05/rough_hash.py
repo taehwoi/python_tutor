@@ -1,3 +1,4 @@
+# maps word to number in between 0~100
 def score(word):
     s = sum((ord(c)-ord('a')+1 for c in word))
     return s % 101

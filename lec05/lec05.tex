@@ -26,7 +26,7 @@
 \MakePerPage{footnote}
 
 \title{Python 101}
-\subtitle{Lec05 \\ Collections}
+\subtitle{Lec04 \\ Useful collections and modules}
 \author{thoum}
 
 \begin{document}
@@ -41,38 +41,38 @@
 
 \begin{frame}
 \frametitle{Turing Complete}
-  We can do everything\tiny{a computer can} \normalsize with what we have learned so far.
+  In theory, we \textit{can} do everything\tiny{a computer can} \normalsize with what we have learned so far.
+  That does not imply efficiency.
   
-  But efficiency / simplicity is called for.
+\end{frame}
+
+\begin{frame}
+  Python provides datatypes and $MANY$ useful modules that will help us.\\
+  Today, we will take a peek at some of them.
 \end{frame}
 
 \begin{frame}
 \frametitle{Container Datatypes}
   Things that holds other things (\textit{e.g.} tuples, lists, etc.).\\
   \bigskip
-  So far, we have used lists and tuples to store values (instead of declaring
-  100,000 variables). But different times calls for different containers.
+  So far, we have used lists and tuples to store values.\\
+  But there are different containers for different times.
 \end{frame}
 
 \begin{frame}{Dictionary}
   Similar to a list, but instead of using \textit{int} as indices, we can use
   arbitrary objects\footnote{those that are
   \href{https://docs.python.org/2/glossary.html\#term-hashable}{hashable}}
-  as indices(or we call them keys)
+  as indices(a.k.a. key).
 
-  Instead of comparing the key with every key it has, \textit{dictionary} does
-  it efficiently.
-  \footnote{\href{https://en.wikipedia.org/wiki/Collision_(computer_science)}{well, most of the time}}
+  Instead of comparing the key with every key it has, \textit{dictionary}
+  usually
+  \footnote{\href{https://en.wikipedia.org/wiki/Collision_(computer_science)}{Hash
+  Collision}} does it efficiently.
 \end{frame}
 
 \begin{frame}{How?}
-  Imagine how we use an actual Dictionary. We don't start from 'aardvark' to
-  look up 'floccinaucinihilipilification'.
-  We start from the F section.\\
-
-  We have mapped 'floccinaucinihilipilification' to 'f', so that we don't have
-  to compare every word; we just compare with those in the F section.
-  We call this mapping $hashing$.
+  $Hashing$
 \end{frame}
 
 \begin{frame}{Hashing}
@@ -108,36 +108,21 @@
 \end{frame}
 
 \begin{frame}{Using Dictionaries}
-  Operations on iterables(\textit{e.g.} len()) is possible on dictionaries as
-  well.
+  Dictionaries are iterables as well, so operations on iterables(\textit{e.g.}
+  len()) is OK.
 \end{frame}
 
-\begin{frame}{List vs Dictionary}
-  Input: 151 pokemon's name and number.\\
-  Output: Print the pokemon's number when given name.
-\end{frame}
-
-\begin{frame}{List Ver.}
-  \begin{lstinputlisting}
-    {poke_list.py}
-  \end{lstinputlisting}
-\end{frame}
-
-\begin{frame}{Dict Ver.}
-  \begin{lstinputlisting}
-    {poke_dict.py}
-  \end{lstinputlisting}
-\end{frame}
-
-\begin{frame}{Performance?}
-
+\begin{frame}{When are dictionaries useful?}
+  \begin{enumerate}
+    \item The obvious: Link A to B (d[A] = B)
+    \item Use the underlying hashing mechanism to find/search certain object
+      fast.
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}{set}
-  Unordered collection of distinct hashable objects.\\
-  Used for membership, removing duplicates and so on.
+  Unordered collection of $unique$ hashable objects.\\
 \end{frame}
-
 
 \begin{frame}{set examples}
   removing duplicates
@@ -148,15 +133,19 @@
 
 \begin{frame}{set examples}
   testing membership\\
-  list version: 2.978s, set version: 0.044s
+  list version: 3.6s, set version: 0.05s
   \begin{lstinputlisting}
     {./set_membership.py}
   \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{set examples}
+\begin{frame}[fragile]{set examples}
   For other operations like union(), intersection(), difference(), look
   \href{https://docs.python.org/2/library/stdtypes.html\#set}{here}.
+  Or
+  \begin{lstlisting}
+    dir(set)
+  \end{lstlisting}
 \end{frame}
 
 \begin{frame}{Counter}
@@ -164,6 +153,7 @@
   \begin{lstinputlisting}
     {./counter_example.py}
   \end{lstinputlisting}
+  Other operations are also found on the website.
 \end{frame}
 
 \begin{frame}{deque}
@@ -217,27 +207,34 @@
   \textit{e.g.} sorting
 \end{frame}
 
-\begin{frame}{Time-Memory Tradeoff}
-  Things can be sped up by using memory.
-  We memorized 99dan, so it takes us constant time to answer 9*9.
-
-  We didn't memorize(at least I didn't) every integer multiplication,
-  so it takes us time to answer 938212834 * 41237.
+\begin{frame}{Pool}
+  Parallel Computing is an advanced topic, as it requires careful coding to
+  avoid errors like deadlock. ($e.g.$ dining philosophers)\\
+  But, Python's Pool allows us to do simple parallel computing.(use with care)
 \end{frame}
 
-\begin{frame}{Time-Memory Tradeoff}
-  In C, strlen() counts the number of letters, so it takes time proportional to the length of the string.
-
-  In Python, len() returns an internally stored length which is updated everytime the list changes.
-
-  There is a tradeoff between memory, and speed.
+\begin{frame}{Pool}
+  \begin{lstinputlisting}
+    {./pool.py}
+  \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{Time-Memory Tradeoff}
-  Python dicts uses extra memory, and hash computing time, to make
-  access fast enough.
+\begin{frame}{Pool Explained}
+  Pool(4) means we will use 4 cpus. Pool() defaults to $os.cpu\_count()$.\\
+\end{frame}
 
-  In fact, we can think that Python itself uses more running time and memory to make coding fast enough.
+\begin{frame}[fragile]{Pool Explained}
+ with keyword handles initalization and cleanup of certain operations
+\begin{lstlisting}
+# p is only effective within the 'with'
+with Pool() as p:
+    # do something
+
+p = Pool()
+# do something
+p.close()
+p.join()
+\end{lstlisting}
 \end{frame}
 
 

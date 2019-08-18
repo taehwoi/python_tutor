@@ -1,0 +1,12 @@
+\frametitle{Pool Explained}
+with keyword handles initalization and cleanup of certain operations
+\begin{lstlisting}
+# p is only effective within the 'with'
+with Pool() as p:
+    # do something
+
+p = Pool()
+# do something
+p.close()
+p.join()
+\end{lstlisting}
