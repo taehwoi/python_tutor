@@ -1,13 +1,14 @@
-d = {} # use curly braces to create a dictionary
+avengers = {} # use curly braces to create a dictionary
 
-# the name becomes the key, and the hero identity becomes value
-d['brucebanner'] = 'hulk'
-d['tonystark'] = 'ironman'
-d['peterparker'] = 'spiderman'
-d['steverogers'] = 'captainamerica'
+# the names are the keys, and the hero identity are values
+avengers['brucebanner'] = 'hulk'
+avengers['tonystark'] = 'ironman'
+avengers['peterparker'] = 'spiderman'
+avengers['steverogers'] = 'captainamerica'
 
-print(d['tonystark'])
+print(avengers['tonystark'])
 # overwrite key's value
-d['steverogers'] = 'blueskull'
+avengers['steverogers'] = 'blueskull'
+
 # no key: error
-# print(d['thanos'])
+# print(avengers['thanos'])

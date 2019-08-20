@@ -26,7 +26,7 @@
 \MakePerPage{footnote}
 
 \title{Python 101}
-\subtitle{Lec04 \\ Useful collections and modules}
+\subtitle{Lec04 \\ Useful data structures and modules}
 \author{thoum}
 
 \begin{document}
@@ -55,24 +55,20 @@
 \frametitle{Container Datatypes}
   Things that holds other things (\textit{e.g.} tuples, lists, etc.).\\
   \bigskip
-  So far, we have used lists and tuples to store values.\\
+  So far, we have used lists and tuples to store series of values.\\
   But there are different containers for different times.
 \end{frame}
 
 \begin{frame}{Dictionary}
-  Similar to a list, but instead of using \textit{int} as indices, we can use
-  arbitrary objects\footnote{those that are
-  \href{https://docs.python.org/2/glossary.html\#term-hashable}{hashable}}
+  Similar to a list, but instead of \textit{int} as indices, we can use
+  objects that are 
+  \href{https://docs.python.org/3.7/glossary.html\#term-hashable}{hashable}
   as indices(a.k.a. key).
 
   Instead of comparing the key with every key it has, \textit{dictionary}
   usually
   \footnote{\href{https://en.wikipedia.org/wiki/Collision_(computer_science)}{Hash
   Collision}} does it efficiently.
-\end{frame}
-
-\begin{frame}{How?}
-  $Hashing$
 \end{frame}
 
 \begin{frame}{Hashing}
@@ -107,19 +103,6 @@
   \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{Using Dictionaries}
-  Dictionaries are iterables as well, so operations on iterables(\textit{e.g.}
-  len()) is OK.
-\end{frame}
-
-\begin{frame}{When are dictionaries useful?}
-  \begin{enumerate}
-    \item The obvious: Link A to B (d[A] = B)
-    \item Use the underlying hashing mechanism to find/search certain object
-      fast.
-  \end{enumerate}
-\end{frame}
-
 \begin{frame}{set}
   Unordered collection of $unique$ hashable objects.\\
 \end{frame}
@@ -141,11 +124,12 @@
 
 \begin{frame}[fragile]{set examples}
   For other operations like union(), intersection(), difference(), look
-  \href{https://docs.python.org/2/library/stdtypes.html\#set}{here}.
+  \href{https://docs.python.org/3.7/library/stdtypes.html\#set}{here}.
   Or
   \begin{lstlisting}
-    dir(set)
+dir(set)
   \end{lstlisting}
+  to see the methods available.
 \end{frame}
 
 \begin{frame}{Counter}
@@ -153,7 +137,7 @@
   \begin{lstinputlisting}
     {./counter_example.py}
   \end{lstinputlisting}
-  Other operations are also found on the website.
+  Other operations are on the website.
 \end{frame}
 
 \begin{frame}{deque}
@@ -171,7 +155,6 @@
     {./deque_list.py}
   \end{lstinputlisting}
 \end{frame}
-
 
 \begin{frame}{deque vs list}
   List outperforms deque in random access\\
@@ -219,12 +202,21 @@
   \end{lstinputlisting}
 \end{frame}
 
+\begin{frame}[fragile]{Pool}
+  The order of execution is not guaranteed, although the end result would be
+  ordered.
+  \begin{center}
+  \includegraphics[width=80mm]{./pool_result.png}
+  \end{center}
+\end{frame}
+
 \begin{frame}{Pool Explained}
-  Pool(4) means we will use 4 cpus. Pool() defaults to $os.cpu\_count()$.\\
+  Pool(4) means we will use 4 cpus.\\
+  Pool() defaults to $os.cpu\_count()$.(Mine has 4)\\
 \end{frame}
 
 \begin{frame}[fragile]{Pool Explained}
- with keyword handles initalization and cleanup of certain operations
+ $with$ keyword handles initalization and cleanup of certain operations
 \begin{lstlisting}
 # p is only effective within the 'with'
 with Pool() as p:
@@ -237,5 +229,10 @@ p.join()
 \end{lstlisting}
 \end{frame}
 
+\begin{frame}{Pool Performance}
+  \begin{lstinputlisting}
+    {./multi_single.py}
+  \end{lstinputlisting}
+\end{frame}
 
 \end{document}
