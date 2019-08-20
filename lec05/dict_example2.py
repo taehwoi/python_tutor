@@ -1,6 +1,7 @@
+d = {'a':1, 'b':2, 'c':3}
 # dictionaries are iterable
-
 print(len(d))
+
 # iterate over keys
 for k in d:
     print(k)

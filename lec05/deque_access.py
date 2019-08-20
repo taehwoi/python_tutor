@@ -1,15 +1,18 @@
 from collections import deque
 import random
-import timeit
+import time
 
 l = list(range(1000000))
 q = deque(range(1000000))
 
-def f():
-    return l[random.randint(0,999999)]
-def g():
-    return q[random.randint(0,999999)]
+start = time.time()
+for _ in range(100000):
+    l[random.randint(0,999999)]
+end = time.time()
+print("took: ", end - start)
 
-if __name__ == '__main__':
-    print(timeit.timeit("f()", setup="from __main__ import f",number=100000))
-    print(timeit.timeit("g()", setup="from __main__ import g",number=100000))
+start = time.time()
+for _ in range(100000):
+    q[random.randint(0,999999)]
+end = time.time()
+print("took: ", end - start)

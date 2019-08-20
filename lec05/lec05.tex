@@ -3,6 +3,7 @@
 \usepackage{caption}
 \usepackage{color}
 \usepackage{listings}
+\usepackage{kotex}
 \usepackage{subfig}
 \usepackage{cooltooltips}
 \usepackage{hyperref}
@@ -42,13 +43,12 @@
 \begin{frame}
 \frametitle{Turing Complete}
   In theory, we \textit{can} do everything\tiny{a computer can} \normalsize with what we have learned so far.
-  That does not imply efficiency.
+  This does not imply efficiency.
   
 \end{frame}
 
 \begin{frame}
-  Python provides datatypes and $MANY$ useful modules that will help us.\\
-  Today, we will take a peek at some of them.
+  Python provides datatypes and $MANY$ useful modules, which this slide is too narrow to contain.
 \end{frame}
 
 \begin{frame}
@@ -97,10 +97,58 @@
   \end{lstinputlisting}
 \end{frame}
 
+\begin{frame}{Using Dictionaries - Cont'}
+  \begin{lstinputlisting}
+    {dict_example_error.py}
+  \end{lstinputlisting}
+\end{frame}
+
 \begin{frame}{Using Dictionaries}
   \begin{lstinputlisting}
     {dict_example2.py}
   \end{lstinputlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{Detour: Error Handling}
+  What could possibly go wrong with the following code?
+  \begin{lstlisting}
+  n = int(input())
+  k = 3/n
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Detour: Error Handling}
+  Will this do?
+  \begin{lstlisting}
+  n = int()
+  k = 3/n
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Detour: Error Handling}
+  Errors are inevitable; it is our job to handle them.
+  \begin{lstinputlisting}
+    {try.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Detour: Gotta Catch 'em all!}
+  \begin{table}[h!]
+    \begin{tabular}{lll}
+      Avoid the & \includegraphics[height=10mm]{pokemon.jpg} & pattern.
+    \end{tabular}
+  \end{table}
+  \begin{lstinputlisting}
+    {./try_catchall.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Upgraded Dictionaries}
+  \begin{enumerate}
+    \item $set$
+    \item $Counter$
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}{set}
@@ -123,13 +171,12 @@
 \end{frame}
 
 \begin{frame}[fragile]{set examples}
-  For other operations like union(), intersection(), difference(), look
-  \href{https://docs.python.org/3.7/library/stdtypes.html\#set}{here}.
+  For other methos like union(), intersection(), look
+  \href{https://docs.python.org/3.7/library/stdtypes.html\#set}{here}.\\
   Or
   \begin{lstlisting}
-dir(set)
+help(set)
   \end{lstlisting}
-  to see the methods available.
 \end{frame}
 
 \begin{frame}{Counter}
@@ -140,17 +187,18 @@ dir(set)
   Other operations are on the website.
 \end{frame}
 
-\begin{frame}{deque}
-  Double Ended Queue
+\begin{frame}{deque: Double Ended Queue}
+  Double Ended Queue\\
+  \medskip
 
-  Use instead of \textit{list} when inserting, popping happens at the beginning
-  of the list. \textit{e.g.} keeping track of values for moving average?\\
-  Insert, pop at the beginning of the list creates an overhead of
-  shifting every other element to the left.\\
+  Use instead of \textit{list} when inserting, popping occur at the front
+  of the list. (\textit{e.g.} keeping track of values for moving average.)\\
+  Insert, pop at the beginning of the \textit{list} creates an overhead of
+  shifting every other element to the right/left.\\
 \end{frame}
 
 \begin{frame}{deque vs list}
-  list:3.920s, deque: 0.015s
+  list:2.09s, deque: 0.009s
   \begin{lstinputlisting}
     {./deque_list.py}
   \end{lstinputlisting}
@@ -158,36 +206,63 @@ dir(set)
 
 \begin{frame}{deque vs list}
   List outperforms deque in random access\\
-  list:0.111s, deque: 3.597s
+  list:0.1s, deque: 3.6s
   \begin{lstinputlisting}
     {./deque_access.py}
   \end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{What to use?}
-  In choosing the right $thing$ to use, having a slight idea of complexity
-  would help.
+\begin{frame}{Detour: What to use?}
+  Having a slight idea to complexity would help in
+  \begin{enumerate}
+    \item choosing what to use
+    \item understanding other's algorithms
+  \end{enumerate}
 \end{frame}
 
-\begin{frame}{Time/Memory Complexity}
-  How long does an operation take? How much memory does it use?\\
+\begin{frame}{Detour: Time Complexity}
+  How long does an operation take?\\
 \end{frame}
 
-\begin{frame}{Time Complexity}
-  When input size is $N$
-  Some operation might take constant time. \textit{e.g.} lst[i]
+\begin{frame}{Detour: Time Complexity}
+  When a size of a problem is $N$,\\
+  \begin{enumerate}
+    \item Some takes constant time\\
+      \textit{e.g.} lst[i]
+    \item Some takes time proportional to N\\
+      \textit{e.g.} [x for x in range(N)]
+    \item Some takes time proportional to $N^2$\\
+      \textit{e.g.} Choosing 2 from N numbers
+    \item Some takes time proportional to $Nlog(N)$\\
+      \textit{e.g.} sorting
+  \end{enumerate}
+\end{frame}
 
-  Some operation might take time proportional to N.
 
-  \textit{e.g.} iterating over a list
+\begin{frame}{Detour: Big - $O$ Notation}
+  As $N$ grows large, it will be the dominating factor of an algorithm.\\
+  Other constants and lower terms can be ignored.\\
+  We denote this relation by $O$ notation, describing how running time or space
+  requirements of an algorithm grow as the input size grows.\\
+  This helps us analyze running time of algorithms, which would differ among
+  computers with different hardwares.
+  \begin{enumerate}
+    \item Some takes constant time\\
+      \textit{e.g.} $O(1)$
+    \item Some takes time proportional to N\\
+      \textit{e.g.} $O(N)$
+    \item Some takes time proportional to $N^2$\\
+      \textit{e.g.} $O(N^2)$
+    \item Some takes time proportional to $Nlog(N)$\\
+      \textit{e.g.} $O(Nlog(N))$
+  \end{enumerate}
+\end{frame}
 
-  Some operation might take time proportional to $N^{2}$.
-
-  \textit{e.g.} matrix multiplication\\
-
-  Some operation might take time proportional to $Nlog(N)$.
-
-  \textit{e.g.} sorting
+\begin{frame}{Detour: Big - $O$ Notation}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=105mm]{./bigOexample.png}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Pool}
@@ -211,17 +286,21 @@ dir(set)
 \end{frame}
 
 \begin{frame}{Pool Explained}
-  Pool(4) means we will use 4 cpus.\\
-  Pool() defaults to $os.cpu\_count()$.(Mine has 4)\\
+  \begin{enumerate}
+    \item Pool(4) means we will use 4 cpus.
+    \item Pool() defaults to $os.cpu\_count()$.\\
+    \item $map(f, l)$ $\rightarrow$ $[f(x)\ for\ x\ in\ l]$\\
+  \end{enumerate}
 \end{frame}
 
-\begin{frame}[fragile]{Pool Explained}
+\begin{frame}[fragile]{with Explained}
  $with$ keyword handles initalization and cleanup of certain operations
 \begin{lstlisting}
 # p is only effective within the 'with'
 with Pool() as p:
     # do something
 
+# equivalent to
 p = Pool()
 # do something
 p.close()
@@ -230,6 +309,7 @@ p.join()
 \end{frame}
 
 \begin{frame}{Pool Performance}
+  single: 10.5 multi: 3.1
   \begin{lstinputlisting}
     {./multi_single.py}
   \end{lstinputlisting}

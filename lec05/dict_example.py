@@ -1,14 +1,15 @@
-avengers = {} # use curly braces to create a dictionary
+avengers = {'natasharomanof': 'blackwidow'} # use curly braces to create a dictionary
 
-# the names are the keys, and the hero identity are values
+# the names are the KEYS, and the hero identity are VALUES
 avengers['brucebanner'] = 'hulk'
 avengers['tonystark'] = 'ironman'
 avengers['peterparker'] = 'spiderman'
 avengers['steverogers'] = 'captainamerica'
 
-print(avengers['tonystark'])
+# asking for permission pattern
+if 'tonystark' in avengers:
+    print(avengers['tonystark'])
+
 # overwrite key's value
 avengers['steverogers'] = 'blueskull'
-
-# no key: error
-# print(avengers['thanos'])
+print(avengers['steverogers'])

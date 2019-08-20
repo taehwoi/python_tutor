@@ -1,20 +1,21 @@
+# only load deque from collections
 from collections import deque
 import time
 
 l = []
 q = deque() # an empty deque
 
-def f():
-    l = []
-    for i in range(100000):
-        #insert at beginning
-        l.insert(0, i)
-def g():
-    q = deque() # an empty deque
-    for i in range(100000):
-        #insert at beginning
-        q.appendleft(i)
+start = time.time()
+for i in range(100000):
+    #insert at front
+    l.insert(0, i)
+end = time.time()
+print("took: ", end-start)
 
-if __name__ == '__main__':
-    print(timeit.timeit("f()", setup="from __main__ import f",number=2))
-    print(timeit.timeit("g()", setup="from __main__ import g",number=2))
+start = time.time()
+q = deque() # an empty deque
+for i in range(100000):
+    #insert at front
+    q.appendleft(i)
+end = time.time()
+print("took: ", end-start)
