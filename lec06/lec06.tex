@@ -27,7 +27,6 @@
 
 \title{Python 101}
 \subtitle{Lec06 \\ Classes}
-\author{thoum}
 
 \begin{document}
 \frame{\titlepage}
@@ -49,8 +48,17 @@ We pass values to functions, get values, pass them to another function....
 
 \begin{frame}
 \frametitle{Object Oriented Programming}
-  Combine data and functionality in to an \textit{object}.
+  Combine data and functionality in to an \textit{object}.\\
   View programs as object communicating with each other.
+\end{frame}
+
+\begin{frame}
+\frametitle{WHY OOP?}
+\begin{enumerate}
+  \item Encapsulation: Hide details, open APIs.
+  \item Reusability: Need tweaking? Inherit.
+  \item and many more....
+\end{enumerate}
 \end{frame}
 
 \begin{frame}{Objects}
@@ -58,16 +66,13 @@ We pass values to functions, get values, pass them to another function....
 
   Strings are objects (of the str class).
 
-  $[1,2,3].sort()$ are their class methods, and $len([1,2,3])$ returns their
-  internal data: length
+  $[1,2,3].sort()$ are their class methods\\
+  $len([1,2,3])$ returns their internal data: length
 \end{frame}
 
 \begin{frame}
 \frametitle{Creating Classes of our own}
-  We don't usually use classes so much unless we start writing bigger programs.
-
-  The usual Class tutorials force us to create boring examples, like a barking
-  dog and a meowing cat.
+  We need classes so much unless we start writing bigger programs.
 
   We are going to build a basis for a simple RPG game.
 \end{frame}
@@ -77,7 +82,7 @@ We pass values to functions, get values, pass them to another function....
 
   The boss, and you.
 
-  They are both \textit{beings}(there are other beings like the halflings,
+  They are both \textit{being}s(there are other \textit{being}s like the halflings,
   dragons, darkelves...).
 \end{frame}
 
@@ -120,17 +125,16 @@ We pass values to functions, get values, pass them to another function....
 \begin{frame}{Explanation}
   Methods whose names are surrounded by 2 underscores
   (\textit{\_\_XXX\_\_}) are
-  internal methods.
+  \textit{internal} methods.
   They are not meant to be called by the user; they are
-  automatically called based on varying situations. We will look into this
-  later on.
+  automatically called based on varying situations.
   \begin{lstinputlisting}[firstline=1, lastline=7]
     {./being.py}
   \end{lstinputlisting}
 \end{frame}
 
 \begin{frame}{Explanation}
-  \_\_init\_\_ is automatically called upon the creation of an object of the
+  \textit{\_\_init\_\_()} is automatically called upon the creation of an object of the
   class.
   \begin{lstinputlisting}[firstline=7, lastline=14]
     {./being.py}
@@ -150,16 +154,14 @@ We pass values to functions, get values, pass them to another function....
 
 \begin{frame}{Explanation}
   The fields(object variables) are created by \_\_init\_\_.\\
-  In English, its like saying my$self$'s $name$ is $name$(given by
-  \_\_init\_\_).
   \begin{lstinputlisting}[firstline=7, lastline=12]
     {./being.py}
   \end{lstinputlisting}
 \end{frame}
 
 \begin{frame}{Explanation}
-  To show how we use class/object variables, see the $die(self)$
-  method.\footnote{note the $self$!}
+  To see how we use class/object variables, see the $die(self)$
+  method.\footnote{note the $self$!}\\
   This is used when a battle arises (remember, we were pretending to make an RPG game).
   \begin{lstinputlisting}[firstline=17, lastline=19]
     {./being.py}
@@ -216,12 +218,14 @@ We pass values to functions, get values, pass them to another function....
   Type and Try
 \end{frame}
 
-\begin{frame}{Overriding Internal Functions}
-  print((1,2,3)): (1, 2, 3)\\
-  print([1,2,3]): [1, 2, 3]\\
-  print(3): 3\\
-  print(boss): ?\\
-  print(you): ?
+\begin{frame}[fragile]{Overriding Internal Functions}
+  \begin{lstlisting}
+print((1,2,3)): (1, 2, 3)\\
+print([1,2,3]): [1, 2, 3]\\
+print(3): 3\\
+print(boss): ?\\
+print(you): ?
+  \end{lstlisting}
 \end{frame}
 
 \begin{frame}{Overriding Internal Functions}
@@ -240,6 +244,105 @@ We pass values to functions, get values, pass them to another function....
   Now we implement combat for Beings.
   The combat method gets another $Being$, decrease its hp by $3$, and if its hp
   is less or equal than zero, make it die.
+\end{frame}
+
+\begin{frame}
+\frametitle{Inheritance}
+One usage of classes is Inheritance.
+\end{frame}
+
+\begin{frame}
+\frametitle{Inheritance}
+The child inherits every thing about its parent, and $+\alpha$.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Inheritance}
+\begin{lstinputlisting}
+  {./mylist.py}
+\end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Explained}
+  $MyList(list)$ means that this class will inherit from $list$.
+  \begin{lstinputlisting}[firstline=1, lastline=1]
+  {./mylist.py}
+\end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Explained}
+  The $super()$ returns the parent class. We use super() to access the parent
+  classes data methods etc. Here, we initiate the parent first so that
+  parameters are automatically filled in.
+  \begin{lstinputlisting}[firstline=1, lastline=4]
+  {./mylist.py}
+\end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Explained}
+  $min(lst), max(lst)$ takes time proprotional to N.\\
+  Here, we keep track of min and max so that it can be known regardless of
+  size.\\
+  (Of course, there is no free lunch, there is extra cost of comparing at append.)
+  \begin{lstinputlisting}[firstline=1, lastline=6]
+  {./mylist.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Explained}
+  Here, we override the parent's \_\_len\_\_, which determines the value
+  returned when we do $len(lst)$.
+  \begin{lstinputlisting}[firstline=7, lastline=9]
+    {./mylist.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Explained}
+  We override the append() of list, so that we keep track of \_min and \_max.\\
+  After updating \_min and \_max, we insert to the list via super() call.
+  \begin{lstinputlisting}[firstline=11, lastline=16]
+    {./mylist.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Question}
+  Are we done implementing MyList so that it correctlys keep track of min and max?
+\end{frame}
+
+\begin{frame}{Question}
+  \begin{center}
+    NO
+  \end{center}
+\end{frame}
+
+\begin{frame}{The Catch}
+  Everything that can be done to a $list$ can be done to a $MyList$.\\
+  $pop(),\ del,\ insert(),\ mylst[3]=4,\ mylst[3:4]$... you name it.\\
+  \mbox{}\\
+  This means that to correctly keep track of min \& max, we have to override
+  \textit{every single} method of a list that is capable of changing its
+  contents.\\
+  \mbox{}\\
+  Can you remember all of them?
+\end{frame}
+
+\begin{frame}{Composition over Inheritance\footnote{Look this up in Google}}
+    So, it is often wise to compose your class with a list, rather than inheriting
+    it.
+\end{frame}
+
+\begin{frame}{MyList Composition Ver.}
+  We can control the methods we provide for interaction with the internal list.
+  \begin{lstinputlisting}[firstline=1, lastline=23]
+    {./composition.py}
+  \end{lstinputlisting}
+\end{frame}
+
+\begin{frame}{Inheritance?}
+  We might use inheritance when the child has to provide every method its parents
+  provide + $\alpha$. \\($i.e.$ The Gun class that inherits the Weapon class in an RPG
+  game?). \\But Design Patterns are a complicated subject by itself, so we won't
+  deal it in detail.
 \end{frame}
 
 \end{document}
