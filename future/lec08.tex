@@ -202,14 +202,14 @@ https://pillow.readthedocs.io/en/stable/
 \end{frame}
 
 \begin{frame}{Pillow}
-  \begin{lstinputlisting}
-    {pil_test.py}
-  \end{lstinputlisting}
+\begin{lstinputlisting}
+  {pil_test.py}
+\end{lstinputlisting}
 \end{frame}
 
 \begin{frame}{OpenCV}
 \textit{pip install opencv-python}\\
-https://docs.opencv.org/master/d6/d00/tutorial_py_root.html\\
+https://docs.opencv.org/master/d6/d00/tutorial\_py\_root.html\\
 이미지처리 + 컴퓨터비전을 위한 라이브러리.\\
 Pillow보다 강력하지만, 복잡하네요\\
 컴퓨터비전 이론을 몰라도 Ctrl CV로 사용할 수 있으나, 왜 결과가 나오는 지 모를 수가 있음.
@@ -250,124 +250,104 @@ Pillow보다 강력하지만, 복잡하네요\\
 
 \begin{frame}{Requests}
 \textit{pip install requests}\\
-HTTP 요청\footnote{비약하자면, 인터넷}을 주고받는 모듈\\
+HTTP 요청\footnote{비약하면 인터넷에서 보는 것}을 주고받는 모듈\\
 https://2.python-requests.org/en/master/
 \end{frame}
 
-\begin{frame}{족보를 구하러 가자}
-이 페이지를 보여주는 HTML문서에서 숫자 이미지의 위치를 찾을 수 있습니다. src의 주소에서 이미지를 다운 받는 것
-  같네요.
+\begin{frame}{Requests}
+\begin{lstinputlisting}
+  {namu_read.py}
+\end{lstinputlisting}
+나무위키 링크에서 무언가 받아오기
 \end{frame}
 
-\begin{frame}{족보를 구하러 가자}
-  링크를 우클릭해서 복사(Copy link address)해봅시다. 주소는 사람마다 다를 수
-  있습니다. 
+\begin{frame}{Requests}
+\begin{lstinputlisting}
+  {insta_login.py}
+\end{lstinputlisting}
+인스타그램 로그인 하기
 \end{frame}
 
-\begin{frame}{문제은행이 여기있네}
-  짠! 복사한 링크를 크롬에서 열어보면, 새로고침 할 때마다 새로운 숫자캡챠가 나오는 
-  페이지가 나옵니다.
+\begin{frame}{Requests - 단점}
+사이트마다 이런 종류의 접속을 막기 위해 다양한 방법을 사용해서,
+사이트의 구조를 잘 찾아봐야 짤 수 있고, 귀찮다.
+
+정적인 웹페이지에서는 잘 되지만, js를 많이 사용하는 동적인 웹페이지는 정보를
+  받아오기 어렵다.
 \end{frame}
 
-\begin{frame}{웹크롤링 등판}
-  이젠 웹크롤링을 이용해서 저 링크에서 사진을 여러 장 다운받으면, 날 것의
-  데이터는 준비가 끝납니다.
+\begin{frame}{그래서 Selenium}
+\textit{pip install selenium}\\
+브라우저를 직접 이용하여, 웹사이트에 접근 할 수 있다.\\
+만든 웹앱을 테스트하는 용도의 프로그램이지만, 얼마든지 응용 가능.
 \end{frame}
 
-\begin{frame}{웹크롤링 등판}
-  아까의 링크로부터 IMG\_COUNT 만큼 사진을 다운받는 코드입니다. 너무 많이 접속하면 수상하니깐,
-  $time.sleep()$ 으로 조금 기다립니다.
+\begin{frame}{Selenium}
+\textit{pip install selenium}\\
++\\
+자기가 사용할 브라우저의 웹드라이버를 설치해야 한다.\\
+크롬: https://sites.google.com/a/chromium.org/chromedriver/downloads\\
+파이어폭스: https://github.com/mozilla/geckodriver\\
+익스플로러: ??
+
+화면뜨는 것이 싫다면, headless 크롬을 이용하면 된다.
 \end{frame}
 
-\begin{frame}{제 2 장}
-  데이터 요리하기
+\begin{frame}{Selenium}
+\begin{lstinputlisting}
+  {snulogin.py}
+\end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{날 것의 데이터}
- 확보한 500장의 숫자 데이터는 여러가지 문제점이 있습니다.
-  \begin{enumerate}
-    \item 여러가지 색깔이다.\\
-      컴퓨터가 색깔이 다른 같은 숫자를 다른 것으로 인식한다면, 학습시키기가
-      어렵습니다.
-    \item 두 자리 숫자이다.\\
-      0-9는 10개만 구분하면 되지만, 10-99 는 90개를 구분해야 합니다. 
-    \item 해답이 없다.\\
-      기출문제에 답이 있어야 공부가 되겠죠? 지금의 데이터는 라벨링이 되지
-      않아서, 컴퓨터가 학습을 하더라도 뭐가 뭔지 알 수가 없습니다.
-  \end{enumerate}
+\begin{frame}{Selenium}
+\begin{lstinputlisting}
+  {instalogin.py}
+\end{lstinputlisting}
 \end{frame}
 
-\begin{frame}{날 것의 데이터}
-  쉬운 문제점들부터 해결합니다.
-  \begin{enumerate}
-    \item 여러가지 색깔이다.\\
-      이미지 처리를 통해 사진을 흑백으로 바꾸면 됩니다.
-    \item 두 자리 숫자이다.\\
-      흑백으로 바꾼 후에는, 바탕과 숫자의 경계를 쉽게 구분하여, 숫자들을 한
-      자리씩 쉽게 분리 할 수 있습니다.
-  \end{enumerate}
+\begin{frame}{Selenium}
+특정 HTML 요소에 접근하는 다양한 방법이 있고, 되는 방법도, 안되는 방법도
+  있습니다 (복불복?)
 \end{frame}
 
-\begin{frame}{데이터 요리하기}
-  이미지 처리를 위해서는 OpenCV를 활용합시다.
+\begin{frame}{Selenium}
+인터넷에서 이것저것 긁어왔는데, 그 다음엔?
 \end{frame}
 
-\begin{frame}{데이터 요리하기}
-  이미지 처리를 위해서는 OpenCV를 활용합시다.
+\begin{frame}{KoNLPy}
+한국어 처리 라이브러리
 \end{frame}
 
-\begin{frame}{데이터 요리하기}
-  gray image, 즉 흑백으로 바꿔주는 부분입니다.
+\begin{frame}{KoNLPy}
+설치하기가 조금 까다로워서 불편합니다.\\
+https://konlpy-ko.readthedocs.io/ko/v0.4.3/\#start
 \end{frame}
 
-\begin{frame}{데이터 요리하기}
-  Contour는 이미지에서 끊기지 않고 연결되어 있는 부분을 말합니다.
-  두 숫자겠지요. boundingRect는 그 부분을 감싸는 최외곽 직사각형을 의미합니다.
-  데이터에서 2개의 boundingRect를 추출하여, 숫자 2개를 분리할 수 있습니다.
+\begin{frame}{KoNLPy}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=90mm,height=30mm]{korean.png}
+\end{figure}
 \end{frame}
 
-\begin{frame}{데이터 요리하기-사소하지만 중요한}
-  숫자의 크기가 다르면, 학습시키는 것이 귀찮거나, 불가능 할 수도 있습니다.
-  적절한 보간법(INTER\_CUBIC)을 이용해 각기 다른 크기의 숫자들을 28x28로
-  통일시켜줍니다.
+\begin{frame}{Tossi}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=50mm,height=50mm]{poke.jpg}
+\end{figure}
+이런 문제(을)를 해결하는 라이브러리입니다.\\
+https://github.com/what-studio/tossi
 \end{frame}
 
-\begin{frame}{데이터 요리하기- 초벌 끝}
-  1000장의, 동일한 크기의, 흑백 숫자 이미지를 얻었습니다. 각 숫자 당 약 100장
-  씩 입니다.
+\begin{frame}{게임제작툴}
+은 생략.
 \end{frame}
 
-\begin{frame}{데이터 요리하기- 어려운 부분}
-  \begin{enumerate}
-    \item 해답이 없다.\\
-      학습 데이터에 한해서는, 사람이 직접 정답이 뭔지 적어주어야 합니다.
-      성능이 떨어지는 알고리즘의 도움을 받아
-      라벨링을 할 때도 있으나, 결국 사람이 확인해야 합니다.
-      기계학습 연구실 대학원생의 존재의의입니다.\\
-  \end{enumerate}
+\begin{frame}{다른 라이브러리들?}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=80mm,height=50mm]{google.png}
+\end{figure}
 \end{frame}
-
-\begin{frame}{데이터 요리하기}
-  그럼, 이제 1000개의 숫자를 맞춰 줄 대학원생을 구하기 위해 교수가 되어봅시다.
-\end{frame}
-
-\begin{frame}{데이터 요리하기}
-  도와주는 스크립트: 숫자 이미지를 화면에 띄워주고, 무슨 숫자인지
-  입력하면 파일명(라벨)을 바꿔줍니다.
-\end{frame}
-
-\begin{frame}{오늘은 내가 대학원생}
-\end{frame}
-
-\begin{frame}{요리준비 끝}
-2시간 정도 걸렸습니다.
-\end{frame}
-
-\begin{frame}{예고}
-잘 정제된 자료를 확보하였으니, 적절한 기계학습 알고리즘을 골라 학습시킵니다.
-그후에, 수강신청사이트에서 직접 이미지를 캡쳐하고, 위의 방법대로 흑백으로
-  만들고, 쪼개고, 크기를 바꾼 다음, 컴퓨터 보고 맞춰보라 합니다.
-\end{frame}
-
 
 \end{document}
