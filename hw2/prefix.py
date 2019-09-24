@@ -1,8 +1,7 @@
-def infix_to_prefix(exp):
-    prec = {'(':0, '+':1, '-':1, '*':2, '/':2}
+def infix_prefix(tokens):
+    prec = {'(':0, '+':1, '-':1, '*':2, '/':2, '^':3}
     operators = []
     operands = []
-    tokens = list(exp)
 
     for t in tokens:
         if t == '(':
@@ -30,19 +29,7 @@ def infix_to_prefix(exp):
         operands.append((op, l_oprnd, r_oprnd))
     return operands[-1]
 
-def calculate(prefix_exp):
-    #TODO: delete pass and fill me in
-    pass
 
-exp = input()
-# remove the # to try the examples
-# exp = "3+4*2"
-# exp = "3*4"
-# exp = "3*4-2"
-# exp = "3*(4-2)"
+exp = "3-2^0"
 
-prefix_exp = infix_to_prefix(exp)
-
-# remove the # to see the converted prefix notation.
-print(prefix_exp)
-# print(calculate(prefix_exp))
+print((infix_prefix(list(exp))))

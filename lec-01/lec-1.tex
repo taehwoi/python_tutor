@@ -1,0 +1,209 @@
+\documentclass{beamer}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{kotex}
+\usepackage{subfig}
+\usepackage{cooltooltips}
+%\usepackage{epsfig, graphics}
+\usepackage{hyperref}
+\usepackage{perpage}
+\usepackage[normalem]{ulem}
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
+\input{../langListingMonokai}
+
+\newenvironment{enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=pink,
+}
+
+\MakePerPage{footnote}
+
+\title{Python 101}
+\subtitle{Lec -1\\ 되돌아보기}
+\author{엄태휘}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{되돌아보기}
+\textit{"한 학기를 되돌아보는 제일 좋은 방법은 기말고사입니다."}\\
+-K모 교수-
+\end{frame}
+
+\begin{frame}
+\frametitle{문제 0/10}
+제 이름은?
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{문제 1/10}
+다음 코드를 시행한 결과는?
+\begin{lstlisting}
+a = "deadbeef"
+print(len((set(a))))
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{문제 2/10}
+Python의 dict의 원소에서 대해서 일반적으로 $O(1)$의 접근을 할 수 있는 이유는?
+\begin{enumerate}
+  \item hash
+  \item back propagation
+  \item hershey
+  \item gradient descent
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{문제 3/10}
+중간계산결과를 저장하여 중복되는 계산을 줄이는 기법의 이름은?
+\begin{enumerate}
+  \item loop unrolling
+  \item garbage collection
+  \item memoization
+  \item sensation
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{문제 4/10}
+다음 코드의 시간복잡도 $O(?)$를 말하시오.
+\begin{lstlisting}
+def f(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    lesser_arr, equal_arr, greater_arr = [], [], []
+    for num in arr:
+        if num < pivot:
+            lesser_arr.append(num)
+        elif num > pivot:
+            greater_arr.append(num)
+        else:
+            equal_arr.append(num)
+    return f(lesser_arr) + equal_arr + f(greater_arr)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+농담이고\\
+(궁금하시다면\ldots평균: $O(NlogN)$, 최악:$O(N^2)$)
+\end{frame}
+
+\begin{frame}[fragile]{스타트업 이야기를 좀 해보아요}
+\begin{lstlisting}
+print('START-UP'.araboza())
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{스타트업 이야기를 좀 해보아요}
+Q: 좋은 스타트업은 도대체 뭔가요?
+\end{frame}
+
+\begin{frame}[fragile]{물어보았습니다}
+\begin{figure}[H]
+  \centering
+  \subfloat{
+    \includegraphics[width=0.45\linewidth]{k1.png}}
+  \subfloat{
+    \includegraphics[width=0.45\linewidth]{k2.png}}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{물어보았습니다}
+\begin{figure}[H]
+  \includegraphics[width=0.6\linewidth]{kakao2.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{물어보았습니다}
+\begin{figure}[H]
+  \centering
+  \subfloat{
+    \includegraphics[width=0.45\linewidth]{k3.png}}
+  \subfloat{
+    \includegraphics[width=0.45\linewidth]{k4.png}}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{물어보았습니다}
+\begin{figure}[H]
+  \centering
+  \subfloat{
+    \includegraphics[width=0.45\linewidth]{kakao3_5.png}}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{물어보았습니다}
+\begin{figure}[H]
+  \centering
+  \subfloat{
+    \includegraphics[width=0.45\linewidth]{kk5.png}}
+  \subfloat{
+    \includegraphics[width=0.45\linewidth]{kk6.png}}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{물어보았습니다}
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.65\linewidth]{kakao5.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{물어보았습니다}
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.65\linewidth]{kakao7.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{물어보았습니다}
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.45\linewidth]{./insta.jpg}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{물어보았습니다}
+\begin{figure}[H]
+  \centering
+  \subfloat{
+    \includegraphics[width=0.45\linewidth]{kakao9.png}}
+  \subfloat{
+    \includegraphics[width=0.45\linewidth]{kakao8.png}}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{스타트업 이야기를 좀 해보아요}
+Q: 스타트업에 일하고 싶은 이유는 어떻게 되시나요?
+\end{frame}
+
+\begin{frame}[fragile]{다시 파이선으로}
+프로그래밍 연습하기 좋은 곳:\\
+https://www.acmicpc.net/\\
+프로젝트 기반 학습:\\
+https://github.com/tuvtran/project-based-learning\#python
+\end{frame}
+
+\begin{frame}[fragile]
+  \centering 감사합니다\\
+
+\end{frame}
+
+
+
+\end{document}
